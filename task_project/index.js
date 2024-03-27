@@ -27,6 +27,7 @@ app.use('/ajax_job_form/save',require('./routes/tasks/ajax_job_form/save'))
 app.use('/ajax_job_form/read',require('./routes/tasks/ajax_job_form/getRecord'))
 app.use('/ajax_job_form/update',require('./routes/tasks/ajax_job_form/updateRecord'))
 
+app.use('/html',require('./routes/tasks/html/html'))
 
 //-----------------------------------------------------------------------------------------------
 app.use('/register' ,require('./routes/register/register'))
