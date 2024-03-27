@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: aqua;
+        }
+        table,tr,td{
+            border: 1px solid black;
+        }
+        td{
+            height: 100px;
+            width:100px;
+            background-color: black;
+        }
+        #r_id {
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3 >score <span id="score"></span></h3>
+        <h3><span id="timer"></span></h3>
+        <h3 class="pause_btn"></h3>
+    </div>
+    <div>
+        <table id="table_info">
+            <tr>
+                <td id="r_id"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <script >
+
+var table_info=document.getElementById('table_info');
+var allTd=document.querySelectorAll('td')
+
+var btn=document.getElementById('r_id')
+
+var scoreCount=0
+
+var countDown=60
+
+var timeout=setInterval(()=>{
+    countDown--
+    document.getElementById('timer').innerText=countDown
+
+    if(countDown==0){
+        alert('time out')
+        clearInterval(timeout)
+    }
+},(1000))
+
+
+var color=["red","blue","orange","grey"]
+
+function randomColor(){
+    var tdLength=document.querySelectorAll('td')
+    var len =tdLength.length
+    var randomColor=color[Math.floor(Math.random()*color.length)]
+
+    for(let i=0;i<len;i++){
+        tdLength[i].style.backgroundColor=randomColor
+    }
+}
+
+function randomValue(row,col){
+    let total=row*col;
+    let number =Math.floor(Math.random()*total)
+    return number;
+}
+
+table_info.addEventListener('click',function (e){
+    if(e.target.id == 'r_id'){
+        var table=document.getElementById('table_info')
+        var colCount = table.rows[0].cells.length;
+        var rowCount = table.rows.length;   
+
+        var row=table.insertRow(rowCount)
+                    for(let i=0;i<colCount;i++){
+                        
+                        row.insertCell(i);
+                        
+                        // console.log("uniue"+counter)
+                    }
+
+                    var row=table.rows
+                    var i = 0;  
+                    for (var j = 0; j < row.length; j++) { 
+                    row[j].insertCell(colCount); 
+                    } 
+
+                    randomColor();
+
+                var score=document.getElementById('score')
+                scoreCount++;
+                score.innerText=scoreCount
+
+                var removeId=document.getElementById('r_id').setAttribute('id','')
+
+                let totalelenth=rowCount * colCount
+
+                let randomNumber=randomValue(rowCount,colCount)
+
+                let data=document.querySelectorAll('td')
+                data[randomNumber].setAttribute('id','r_id')
+                
+    }else{
+        alert('game is finshied')
+        location.reload(); 
+    }
+})
+    </script>
+</body>
+</html>

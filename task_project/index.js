@@ -17,9 +17,9 @@ app.use(express.static(path.join(__dirname , 'public')))
 
 // app.use(cors())//because this need if we use call api in react app then 'cors' is needed
 
-//all tasks
+//all tasks 
 app.use('/dynamic_table',require('./routes/tasks/dynamic_table/dynamic_table'))
-
+app.use('/kuku_cube',require('./routes/tasks/kuku cube/kuku cube'))
 
 app.use('/register' ,require('./routes/register/register'))
 app.use('/login' ,require('./routes/login/login'))
