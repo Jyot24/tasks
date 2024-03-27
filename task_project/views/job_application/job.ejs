@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>job one form</title>
+    <link rel="stylesheet" href="/job_application/css/navbar.css">
+    <style>
+        .flex-container>div {
+            margin: 10px;
+            padding: 25px;
+            font-size: 15px;
+        }
+
+        .error {
+            /* width: 80px; */
+            font-size: 8px;
+        }
+
+        legend {
+            color: rgb(0, 0, 0);
+        }
+
+        label {
+            margin: 30px;
+            display: inline-block;
+            text-align: right;
+        }
+
+        input,
+        textarea,
+        select {
+            display: inline-block;
+            text-align: left;
+
+        }
+
+        span {
+            position: absolute;
+            text-align: left;
+            /* margin-top: 30px; */
+            /* display: inline-block; */
+            /* text-align: center;
+    z-indEx:  1; */
+        }
+
+        fieldset:nth-of-type(odd) {
+            background-color: rgb(235, 176, 132);
+        }
+
+        fieldset:nth-of-type(even) {
+            background-color: rgb(178, 235, 132);
+        }
+
+        input[type=submit] {
+            width: 100%;
+            text-align: center;
+            font-size: 40px;
+            color: aliceblue;
+            background-color: rgb(7, 98, 98);
+        }
+    </style>
+
+</head>
+
+<body>
+    <%let basic_details%>
+
+    <%let course_details%>
+
+        <% let language %>
+<% let check %>
+            <%let preferances%>
+
+                <%let referance_contact %>
+                    <% let technologies_db %>
+
+                        <%let work_experience %>
+    <%try{%>
+        <% basic_details=temp_update[0][0]%>
+
+        <% course_details=temp_update[1]%>
+
+        <%  language=temp_update[2] %>
+
+        <% preferances=temp_update[3][0]%>
+        <% check=check %>
+        <% referance_contact=temp_update[4] %>
+        <%  technologies_db=temp_update[5] %>
+
+        <% work_experience=temp_update[6] %>
+    <%}catch{%>
+        <% basic_details=""%>
+
+        <% course_details=""%>
+
+            <%  language="" %>
+
+                <% preferances=""%>
+<% check="" %>
+                    <% referance_contact="" %>
+                        <%  technologies_db="" %>
+
+                            <% work_experience="" %>
+        <%}%>
+    
+
+
+                                <%- include('component/Navbar'); %>
+                                    <h1 style="text-align: center;">JYOT KHANT - 24DEV057</h1>
+                                    <h4 style="text-align: center;">Job Application Form</h4>
+                                    <div style="margin: 10px; padding: 20px;">
+
+                                        <%if(basic_details==""){%>
+                                            <form action="/job_application/auth" method="post" name="job_form" onsubmit="return validateForm()">
+                                            <%}else{%>
+                                                <form action="/job_application/update" method="post" name="job_form" onsubmit="return validateForm()">
+                                                <%}%>
+                                        
+                                            <fieldset style="margin: 10px; padding: 10px;">
+                                                <legend>Basic Detail</legend>
+                                                <input type="hidden" name="job_id" value="<%=basic_details.job_id%>">
+                                                <div style="display: flex;" class="flex-container">
+                                                    <div>
+                                                        <label for="First"> First Name:</label><span class="error First"
+                                                            id="error-First"></span><input name="First" type="text"
+                                                            id="First" class="field-required" placeholder="Ex: Jyot"
+                                                            value="<%=basic_details!='' ?basic_details.first_name: ''%>"><br>
+                                                        <label for="Designation"> Designation:</label><span
+                                                            class="error Designation"
+                                                            id="error-Designation"></span><input name="Designation"
+                                                            type="text" id="Designation" placeholder="Ex: devlopment"
+                                                            class="field-required"
+                                                            value="<%=basic_details!='' ?basic_details.designation: ''%>"><br>
+                                                        <label for="Email"> Email:</label><span class="error  Email"
+                                                            id="error-Email"></span><input name="Email" type="text"
+                                                            id="Email" class="field-required"
+                                                            placeholder="Ex: abc@gmail.com"
+                                                            value="<%=basic_details!='' ?basic_details.email: ''%>"><br>
+                                                        <label for="Phone"> Phone Number:</label><span
+                                                            class="error phone-number" id="error-Phone"></span><input
+                                                            name="Phone" type="text" maxlength="10" id="Phone"
+                                                            class="field-required" placeholder="Ex: 9876543210"
+                                                            value="<%=basic_details!='' ? basic_details.phoneNumber : '' %>"><br>
+                                                        
+                                                            <label for="dob">dob</label><span class="error dob"
+                                                            id="error-dob"></span><input type="text" name="dob" id="dob"
+                                                            class="field-required" placeholder="Ex: YYYY-MM-DD"
+                                                            value="<%=basic_details!='' ? (new Date(basic_details.dob)).toISOString().split('T')[0] : ''%>"><br>
+                                                        <%-gender %>
+                                                            <br>
+
+                                                            <span class="error last" id="error-relationshipstatus"></span>
+                                                            <%-relation %>
+                                                                <br>
+
+                                                    </div>
+                                                    <div>
+                                                        <label for="last">Last Name:</label>
+                                                        <span class="error last" id="error-last"></span><input
+                                                            class="field-required" name="last" type="text" id="last"
+                                                            placeholder="Ex: Khant"
+                                                            value="<%=basic_details!=''?basic_details.last_name:''%>"><br>
+                                                        <label for="address1">Address1:</label>
+                                                        <span class="error address1" id="error-address1"></span><input
+                                                            class="field-required" name="address1" id="address1"
+                                                            placeholder="Ex: a-204,valsad"
+                                                            value="<%=basic_details!=''?basic_details.address1:''%>"></input>
+                                                        <br>
+                                                        <label for="address2">Address2:</label>
+
+                                                        <span class="error address2" id="error-address2"></span><input
+                                                            class="field-required" name="address2" id="address2"
+                                                            placeholder="Ex: a-204,valsad"
+                                                            value="<%=basic_details!=''?basic_details.address2:''%>"></input>
+                                                        <br>
+                                                        <label for="city">City:</label>
+
+                                                        <span class="error city" id="error-city"></span><select
+                                                            name="city" id="city" class="field-required">
+                                                            <option value="valsad" selected>valsad</option>
+                                                            <option value="surat">surat</option>
+                                                        </select><br>
+                                                        <label for="state">state:</label>
+
+                                                        <span class="error state" id="error-state"></span><select
+                                                            name="state" id="state" class="field-required">
+                                                            <option value="gujrat" selected>gujrat</option>
+                                                            <option value="UP" selected>UP</option>
+                                                        </select>
+                                                        <br>
+                                                        <label for="zipcode">zipcode : </label>
+
+                                                        <!-- dob <input type="date" name="dob" id=""> -->
+                                                        <span class="error zipcode" id="error-zipcode"></span><input
+                                                            class="field-required check_is_number" name="zipcode"
+                                                            id="zipcode" type="text" placeholder="Ex:"
+                                                            value="<%=basic_details!=''?basic_details.zip_id:''%>"><br </div>
+                                                    </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <legend onclick="createNode('course','course-chlid')">+ Education Detail: 
+                                                        </legend>
+                                                        <span id="check-all-fill-or-not" class="error"></span>
+
+                                                        <%if(course_details==""){%>
+                                                            <div onclick="removeNode('course','course-chlid')"><b>__</b></div>
+                                                            <%}%>
+                                                        <div id="course">
+                                                        <%if(course_details==""){%>
+                                                            <div id="course-chlid">
+        
+                                                                <!-- <label for="course_name">Name of Board :</label> -->
+                                                                <%- course_name %>
+                                                                    <!-- <span class="error course_name" id="error-course_name"></span> <input name="course_name"
+                                                            id="course_name" class=" check-all-fill-or-not" type="text" placeholder="Ex: XYZ"> -->
+        
+                                                                    <label for="passing_year">Passiong Year:</label>
+                                                                    <span class="error passing_year"
+                                                                        id="error-passing_year"></span> <input
+                                                                        name="passing_year[]" id="passing_year"
+                                                                        class="check-all-fill-or-not" type="text" min="1900"
+                                                                        max="2099" step="1" placeholder="Ex: YYYY" value="">
+        
+                                                                    <label for="percentage">Percentage:</label>
+                                                                    <span class="error percentage" id="error-percentage"></span>
+                                                                    <input name="percentage[]" id="percentage"
+                                                                        class=" check-all-fill-or-not" id="percentage"
+                                                                        type="text" min="0" max="100" placeholder="Ex: 00.00"
+                                                                        value="">
+                                                                    <hr />
+                                                            </div>
+                                                            <%}else{%>
+                                                                    <% course_details.map((object_course)=>{%>
+                                                                        <div id="course-chlid">
+        
+                                                                            <!-- <label for="course_name">Name of Board :</label> -->
+                                                                            <%- course_name %>
+                                                                                <!-- <span class="error course_name" id="error-course_name"></span> <input name="course_name"
+                                                                id="course_name" class=" check-all-fill-or-not" type="text" placeholder="Ex: XYZ"> -->
+        
+                                                                                <label for="passing_year">Passiong Year:</label>
+                                                                                <span class="error passing_year"
+                                                                                    id="error-passing_year"></span> <input
+                                                                                    name="passing_year" id="passing_year"
+                                                                                    class="check-all-fill-or-not" type="text"
+                                                                                    min="1900" max="2099" step="1"
+                                                                                    placeholder="Ex: YYYY"
+                                                                                    value="<%=object_course.passing_year %>">
+        
+                                                                                <label for="percentage">Percentage:</label>
+                                                                                <span class="error percentage"
+                                                                                    id="error-percentage"></span>
+                                                                                <input name="percentage" id="percentage"
+                                                                                    class=" check-all-fill-or-not"
+                                                                                    id="percentage" type="text" min="0"
+                                                                                    max="100" placeholder="Ex: 00.00"
+                                                                                    value="<%=object_course.percentage %>">
+                                                                                <hr />
+        
+                                                                        </div>
+                                                                        <% }) %>
+                                                                            <%}%>
+                                                                </div>
+                                                    </fieldset>
+                                                    <fieldset style="margin: 10px; padding: 10px;">
+                                                        <legend onclick="createNode('workExperience','workExperience-child')"><b>+</b>
+                                                            <span>work Experience</span>
+                                                        </legend>
+
+                                                        <%if(work_experience==""){%>
+                                                            <div onclick="removeNode('workExperience','workExperience-child')"><b>__</b></div>
+                                                            <%}%>
+                                                        <span id="check-all-fill-or-not-work" class="error"></span>
+                                                        <span id="error-checked-date" class="error"></span>
+                                                        <div id="workExperience">
+        
+                                                            <%if(work_experience==""){%>
+                                                                <div id="workExperience-child">
+                                                                    <br>
+                                                                    company name <input name="company[]" type="text"
+                                                                        class="check-all-fill-or-not-work" placeholder="Ex: xyz"
+                                                                        value="">
+                                                                    Designation <input name="workDesignation[]"
+                                                                        class="check-all-fill-or-not-work" type="text"
+                                                                        placeholder="Ex: devlopment" value="">
+                                                                    From <input name="From[]" type="text"
+                                                                        class="check-all-fill-or-not-work checked-date"
+                                                                        value="">
+                                                                    To <input name="to[]" type="text"
+                                                                        class="check-all-fill-or-not-work checked-date"
+                                                                        value="">
+        
+        
+                                                                </div>
+                                                                <%}else{%>
+                                                                    <input type="hidden" name="workDeleteId" value="" id="workDeleteId">
+                                                                    <% work_experience.map((object)=>{%>
+        
+                                                                        <div id="workExperience-child">
+                                                                            <br>
+                                                                            <!-- <%=object.w_no%> -->
+
+                                                                            <div onclick="getDeleteWork(<%=object.w_no%>)">
+                                                                                delete
+                                                                            </div>
+                                                                            <input type="hidden" name="company_no" value="<%=object.w_no%>">
+                                                                            <p></p>
+                                                                            company name <input name="company" type="text"
+                                                                                class="check-all-fill-or-not-work"
+                                                                                placeholder="Ex: xyz"
+                                                                                value="<%=object.company_name %>">
+                                                                            Designation <input name="workDesignation"
+                                                                                class="check-all-fill-or-not-work" type="text"
+                                                                                placeholder="Ex: devlopment"
+                                                                                value="<%=object.designation %>">
+                                                                            From <input name="From" type="text"
+                                                                                class="check-all-fill-or-not-work checked-date"
+                                                                                value="<%=(new Date(object.w_from)).toISOString().split('T')[0]%>">
+                                                                            To <input name="to" type="text"
+                                                                                class="check-all-fill-or-not-work checked-date"
+                                                                                value="<%= (new Date(object.w_to)).toISOString().split('T')[0]%>">
+        
+        
+        
+                                                                        </div>
+                                                                        <% }) %>
+                                                                            <%}%>
+        
+                                                        </div>
+                                                    </fieldset>
+                                                    <div style="display: flex;" class="flex-container">
+                                                        <div>
+                                                            <fieldset style="margin: 10px; padding: 10px;">
+                                                                <legend>Language KNown</legend>
+                                                                <%- languageknown %>
+        
+                                                            </fieldset>
+                                                        </div>
+                                                        <div>
+        
+                                                            <fieldset style="margin: 10px; padding: 10px;">
+                                                                <legend>Technologies you know</legend>
+                                                                <%-technologies %>
+        
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                    <fieldset style="margin: 10px; padding: 10px;">
+                                                        <legend onclick="createNode('Referance','Referance-chlid')"><b>+</b><span>Referance
+                                                                Contact</span></legend>
+                                                                <%if(referance_contact==""){%>
+                                                                <div onclick="removeNode('Referance','Referance-chlid')"><b>__</b></div>
+                                                                <%}%>
+                                                        <span class="error" id="check-all-fill-or-not-Referance"></span>
+                                                        <div id="Referance">
+                                                                    <%if(referance_contact==""){%>
+                                                                        <div id="Referance-chlid">
+                                                                            <br>
+                                                                            Name <input name="ReferanceName[]" type="text"
+                                                                                class="check-all-fill-or-not-Referance"
+                                                                                placeholder="Ex: xyz" value="">
+                                                                            Contact Number <span class="error phone-number"
+                                                                                id="error-Referance-phone"></span><input
+                                                                                name="ReferanceContact[]" id="Referance-phone"
+                                                                                placeholder="Ex: 9876543210"
+                                                                                class="check-all-fill-or-not-Referance phone-number"
+                                                                                type="text" value="">
+                                                                            Relation <input name="Relation[]" type="text"
+                                                                                class="check-all-fill-or-not-Referance"
+                                                                                placeholder="Ex: friend" value=""><br>
+        
+                                                                        </div>
+                                                                        <%}else{%>
+        
+                                                                            <% referance_contact.map((object_r)=>{%>
+                                                                                <div id="Referance-chlid">
+                                                                                    <br>
+                                                                                    Name <input name="ReferanceName" type="text"
+                                                                                        class="check-all-fill-or-not-Referance"
+                                                                                        placeholder="Ex: xyz"
+                                                                                        value="<%=object_r.name %>">
+                                                                                    Contact Number <span
+                                                                                        class="error phone-number"
+                                                                                        id="error-Referance-phone"></span><input
+                                                                                        name="ReferanceContact"
+                                                                                        id="Referance-phone"
+                                                                                        placeholder="Ex: 9876543210"
+                                                                                        class="check-all-fill-or-not-Referance phone-number"
+                                                                                        type="text"
+                                                                                        value="<%=object_r.contactNumber%>">
+                                                                                    Relation <input name="Relation" type="text"
+                                                                                        class="check-all-fill-or-not-Referance"
+                                                                                        placeholder="Ex: friend"
+                                                                                        value="<%=object_r.relation %>"><br>
+        
+                                                                                </div>
+                                                                                <% }) %>
+                                                                                    <%}%>
+                                                        </div>
+                                                    </fieldset>
+        
+                                                    <fieldset style="margin: 10px; padding: 10px;">
+                                                        <legend>Preferances</legend>
+                                                        <div style="display: flex;" class="flex-container">
+        
+                                                            <div>
+                                                                <span class="error last" id="error-prefedlocation"></span>
+                                                                <%-perefed %>
+        
+                                                            </div>
+                                                            <div>
+        
+                                                                <label for="Noticeperiod">Notice period
+                                                                    :</label>
+                                                                <span class="error Noticeperiod"
+                                                                    id="error-Noticeperiod"></span><input id="Noticeperiod"
+                                                                    name="Noticeperiod" class="field-required" type="text"
+                                                                    placeholder="Ex: 4(in month)"
+                                                                    value="<%=preferances!=""?preferances.notice_period:''%>"><br>
+        
+                                                                <label for="ExpactedCtc">Expacted CTC :</label>
+                                                                <span class="error ExpactedCtc" id="error-ExpactedCtc"></span>
+                                                                <input id="ExpactedCtc" name="ExpactedCtc"
+                                                                    class="field-required check_is_number" type="text"
+                                                                    placeholder="Ex: 4.2(Lakh)"
+                                                                    value="<%=preferances!=""?preferances.expacted_ctc:''%>"><br>
+        
+                                                                <label for="CurrentcTC">Current CTC:</label>
+                                                                <span class="error CurrentcTC"
+                                                                    id="error-CurrentcTC"></span><input id="CurrentcTC"
+                                                                    name="CurrentcTC" class="field-required check_is_number"
+                                                                    type="text" placeholder="Ex: 4.2(Lakh)"
+                                                                    value="<%=preferances!=""?preferances.current_ctc:''%>">
+                                                            </div>
+                                                            <div>
+                                                                <span class="error last" id="error-department"></span>
+                                                                <%- department %>
+                                                                    <br>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <% if(check=="hi123" ) {%>
+                                                        <% } else{%>
+                                                            <input type="submit" value="submit">
+                                                            <% } %>        
+                                        </form>
+                                    </div>
+<!-- <script scr="/job_applicationjs/job.js"></script> -->
+                                    <%if(basic_details!=""){%>
+                                        
+<script>
+    var combo_language_temp = '<%- JSON.stringify(language) %>';
+
+let combo_language = JSON.parse(combo_language_temp)
+for (const key in combo_language) {
+    document.getElementById(`${combo_language[key].language_name}`).checked = true;
+    let subfields = document.querySelectorAll(`.${combo_language[key].language_name}`);
+
+    for (let i = 1; i < subfields.length; i++) {
+        subfields[i].disabled = false;
+    }
+    document.getElementById(`${combo_language[key].language_name}${combo_language[key].l_read}`).checked = true;
+    document.getElementById(`${combo_language[key].language_name}${combo_language[key].l_write}`).checked = true;
+    document.getElementById(`${combo_language[key].language_name}${combo_language[key].l_speak}`).checked = true;
+
+}
+
+
+var combo_tech_temp = '<%- JSON.stringify(technologies_db) %>';
+let combo_tech = JSON.parse(combo_tech_temp)
+// //console.log(JSON.parse(combo_tech_temp));
+for (let i in combo_tech) {
+    // //console.log("combo_tech:" + combo_tech[i].name);
+    document.getElementById(`${combo_tech[i].name}`).checked = true;
+    let subfields = document.querySelectorAll(`.${combo_tech[i].name}`);
+
+    for (let i = 1; i < subfields.length; i++) {
+
+
+        subfields[i].disabled = false;
+
+    }
+    document.getElementById(`${combo_tech[i].name}${combo_tech[i].level}`).checked = true
+}
+
+// document.getElementById("hindiread").checked = true;
+
+
+let arr_select_id = [];
+let object_seleted = {}
+let arr_select_value = [];
+[...document.querySelectorAll('option')].map((element) => {
+    element.selected = ""
+});
+
+// let index_course=0;
+
+let check_is_empty_couse_temp = '<%-JSON.stringify(course_details)%>'
+let check_is_empty_couser_object = JSON.parse(check_is_empty_couse_temp)
+if (check_is_empty_couser_object == "") {
+    [...document.querySelectorAll('.course')].map((element, index) => {
+        const newOption = document.createElement('option');
+        const optionText = document.createTextNode(`---seleted the course---`);
+
+        newOption.setAttribute('selected', '')
+        newOption.appendChild(optionText);
+        newOption.setAttribute('value', ``);
+
+        element.appendChild(newOption);
+    })
+    console.log("hi");
+} else {
+    [...document.querySelectorAll('.course')].map((element, index) => {
+        // element.selected = ""
+        const newOption = document.createElement('option');
+        let couse_temp = '<%-JSON.stringify(course_details)%>'
+        let couser_object = JSON.parse(couse_temp)
+        //console.log(typeof index);
+        let current_couser_object = couser_object[`${index}`].name
+        //console.log("elementbhu:" + `${current_couser_object}`);
+
+        const optionText = document.createTextNode(`${current_couser_object}`);
+
+        newOption.setAttribute('selected', '')
+        newOption.setAttribute('hidden', '')
+        newOption.appendChild(optionText);
+        newOption.setAttribute('value', `${current_couser_object}`);
+
+        element.appendChild(newOption);
+    })
+}
+object_seleted["relationshipstatus"] = '<%=basic_details.relationship_status%>'
+// arr_select_value.push('<%=basic_details.relationship_status%>')
+// arr_select_id.push('relationshipstatus')
+
+object_seleted["city"] = '<%=basic_details.city%>'
+// arr_select_value.push('<%=basic_details.city%>')
+// arr_select_id.push('city')
+
+object_seleted["state"] = '<%=basic_details.state%>'
+// arr_select_value.push('<%=basic_details.state%>')
+// arr_select_id.push('state')
+
+object_seleted["prefedlocation"] = '<%=preferances.preferd_location%>'
+// arr_select_value.push('<%=preferances.preferd_location%>')
+// arr_select_id.push('prefedlocation')
+
+object_seleted["department"] = '<%=preferances.department%>'
+// arr_select_value.push('<%=preferances.department%>')
+// arr_select_id.push('department')
+
+
+radiobtn = document.getElementById("<%=basic_details.gender%>");
+radiobtn.checked = true;
+
+//console.log("radiobtn:" + radiobtn);
+
+
+for (let id in object_seleted) {
+    const newOption = document.createElement('option');
+    const optionText = document.createTextNode(`${object_seleted[id]}`);
+
+    newOption.setAttribute('selected', '')
+    newOption.setAttribute('hidden', '')
+    newOption.appendChild(optionText);
+    newOption.setAttribute('value', `${object_seleted[id]}`);
+
+    const select = document.getElementById(`${id}`);
+    select.appendChild(newOption);
+
+} 
+
+let deletework= [];
+
+function getDeleteWork(id){
+    deletework.push(id)
+    console.log("getDeleteWork:"+JSON.stringify(deletework));
+    document.getElementById('workDeleteId').value=deletework
+}
+
+</script>
+ <%}else{%>
+    <script>
+        [...document.getElementsByTagName('select')].map((element)=>{
+            const newOption = document.createElement('option');
+    const optionText = document.createTextNode(`---seleted any one---`);
+
+    newOption.setAttribute('selected', '')
+    // newOption.setAttribute('hidden', '')
+    newOption.appendChild(optionText);
+    newOption.setAttribute('value', ``);
+
+    element.appendChild(newOption);
+        })
+    //     const newOption = document.createElement('option');
+    // const optionText = document.createTextNode(`---seleted the course---`);
+
+    // newOption.setAttribute('selected', '')
+    // // newOption.setAttribute('hidden', '')
+    // newOption.appendChild(optionText);
+    // newOption.setAttribute('value', ``);
+
+    // const select = document.getElementById(`course_name`);
+    // select.appendChild(newOption);
+    </script>
+    <% } %>
+
+</body>
+
+<script>
+//     function myFunctionworkExperience() {
+//     const node = document.getElementById("workExperience-child");
+//     const clone = node.cloneNode(true);
+//     document.getElementById("workExperience").appendChild(clone);
+
+//     //console.log("hi");
+// }
+
+// function myFunctionReferance() {
+//     const node = document.getElementById("Referance-chlid");
+//     const clone = node.cloneNode(true);
+//     document.getElementById("Referance").appendChild(clone);
+
+// }
+
+// function myFunctionCourse(){
+//     const node = document.getElementById("course-chlid");
+//     const clone = node.cloneNode(true);
+//     document.getElementById("course").appendChild(clone);
+    
+// }
+
+// const enDisFields = (lang) => {
+//     let subfields = document.querySelectorAll(`.${lang}`);
+
+//     for (let i = 1; i < subfields.length; i++) {
+
+//         if (subfields[i].disabled) {
+//             subfields[i].disabled = false;
+//         }
+//         else {
+//             subfields[i].checked = false;
+//             subfields[i].disabled = true;
+//         }
+//     }
+// }
+</script>
+ <script src="/job_application/js/job.js"></script>
+<script src="/job_application/js/index.js"></script>
+ 
+
+</html>

@@ -22,6 +22,9 @@ app.use('/student_exam',require('./routes/tasks/student_exam/auth'))
 app.use('/student_exam',require('./routes/tasks/student_exam/page'))
 app.use('/student_exam',require('./routes/tasks/student_exam/filter'))
 
+app.use('/job_application',require('./routes/tasks/job_application/auth'))
+app.use('/job_application',require('./routes/tasks/job_application/form'))
+
 
 app.use('/dynamic_table',require('./routes/tasks/dynamic_table/dynamic_table'))
 app.use('/kuku_cube',require('./routes/tasks/kuku cube/kuku cube'))
