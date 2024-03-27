@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% 
+    let str
+    try {
+        str=string
+    } catch (error) {
+        str=""
+    } %>
+    <!-- _j^k$kk}tt{grh:66 -->
+
+        <th>JYOT KHANT -24DEV057</th>
+<br>
+        <table>
+            <br>
+            <tr>
+                <th>first_name</th>
+                <th>_</th>
+            </tr>
+            <tr>
+                <th>last_name</th>
+                <th>^</th>
+            </tr>
+            <tr>
+                <th>email</th>
+                <th>$</th>
+            </tr>
+            <tr>
+                <th>country</th>
+                <th>}</th>
+            </tr>
+        </table>
+
+       <br>
+    <form action="/delimiter_search" method="post">
+        <input type="text" name="filter" value="<%=str %>" required>
+        <input type="submit" value="Go">
+    </form>
+
+    <% try {%>
+        <%-include('read.ejs') %>
+   
+   <% } catch (error) {
+        
+    } %>
+    
+
+    <!-- _jk$kk}tt{grh:66 -->
+</body>
+</html>

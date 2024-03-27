@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname , 'public')))
 app.use('/dynamic_table',require('./routes/tasks/dynamic_table/dynamic_table'))
 app.use('/kuku_cube',require('./routes/tasks/kuku cube/kuku cube'))
 app.use('/tic_tak_toc',require('./routes/tasks/tic tak toc/tic_tak_toc'))
-
+app.use('/delimiter_search',require('./routes/tasks/delimiter_search/auth'))
 
 //-----------------------------------------------------------------------------------------------
 app.use('/register' ,require('./routes/register/register'))
