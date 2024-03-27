@@ -75,6 +75,8 @@ app.use('/viewGrid',verifyAuth_is_login,require('./routes/tasks/viewGrid/page'))
 
 app.use('/event_table',verifyAuth_is_login,require('./routes/tasks/event_table/event_table'))
 
+app.use('/listuser_fs',require('./routes/tasks/listuser_fs/demo'))
+
 //-------------------------------------------------  register and login  --------------------------------------------------------------
 
 app.use('/register' ,require('./routes/register/register'))

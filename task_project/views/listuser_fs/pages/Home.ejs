@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=\, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="/home.css">
+    </head>
+    <body>
+        <nav>
+            <a href="/user/profile/" tabindex="5">Home</a>
+            <a href="/listuser_fs/listUser">listuser</a>
+        </nav>
+        <h1>Add User</h1>
+
+        <div class="container">
+            <form action="/listuser_fs/addUser" method="post">
+                <input type="text" name="firstname"
+                    placeholder="enter a firstname"><br>
+                <input type="text" name="lastname"
+                    placeholder="enter a lastname"><br>
+                <input type="number" name="age" placeholder="enter a age"><br>
+                <input type="text" name="phonenumber" placeholder="phonenumber">
+                <input type="text" name="email" placeholder="enter a email"><br>
+
+                Gender <input type="radio" name="gender" value="male">male
+                <input type="radio" name="gender" value="female">female<br>
+
+                <label for>Hobbies</label>
+                <input type="checkbox" id="read" name="hobbies"
+                    value="read">
+                <label for="read"> read</label>
+                <input type="checkbox" id="Write" name="hobbies"
+                    value="write">
+                <label for="Write"> Write</label>
+                <input type="checkbox" id="speak" name="hobbies"
+                    value="speak">
+                <label for="speak"> speak</label>
+                <input type="checkbox" id="movie" name="hobbies"
+                    value="movie">
+                <label for="movie"> movie</label><br>
+
+                <textarea name="address" id cols="30" rows="10"></textarea>
+                <br>
+                <input type="submit" value="submit">
+                <input type="reset">
+            </form>
+        </div>
+    </body>
+</html>

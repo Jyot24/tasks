@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>list user</title>
+        <link rel="stylesheet" href="/home.css">
+
+    </head>
+    <body>
+        <h1>List Of User</h1>
+        <form action="/api/auth/userData" method="post">
+            <%var data=temp%>
+            <!-- <%=JSON.stringify(data)%> -->
+            <%var listuser=JSON.stringify(data)%>
+            <table>
+                <tr>
+                    <th>firstname</th>
+                    <th>lastname</th>
+                    <th>email</th>
+                    <th>phonenumber</th>
+                    <th>more detail</th>
+                </tr>
+            </table>
+
+            <%for(let key in temp){%>
+            <table>
+                <tr>
+                    <div>
+                        <td><%=data[key].firstname %></td>
+                        <td><%=data[key].lastname %></td>
+                        <td><%=data[key].email %></td>
+                        <td><%=data[key].phonenumber %></td>
+                        <td><a href="/listuser_fs/userData/<%=key%> ">views deatil</a></td>
+
+                    </div>
+                    <br>
+                </tr>
+            </table>
+            <% } %>
+            <!-- <%for(let key in temp){%>
+            <table>
+                <tr>
+                    <div>
+
+                        <td><%=JSON.stringify(data[key]["firstname"])%></td>
+                        <td><%=JSON.stringify(data[key]["lastname"])%></td>
+                        <td><%=JSON.stringify(data[key]["email"])%></td>
+                        <td><%=JSON.stringify(data[key]["phonenumber"])%></td>
+
+                        <td><a href="/userData/<%=key%> ">views deatil</a></td>
+
+                    </div>
+                    <br>
+                </tr>
+            </table> 
+                <%}%>-->
+                <!-- <input type="submit" value="views detail"></td> -->
+        
+
+            <script>
+            
+        </script>
+        </body>
+    </html>

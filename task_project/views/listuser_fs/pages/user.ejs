@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user</title>
+    <link rel="stylesheet" href="/user.css">
+
+</head>
+<body>
+    <h1>User Record</h1>
+
+    <!-- <%=JSON.stringify(data)%> -->
+
+    <table>
+        <tr>
+            <th>firstname</th>
+            <th><%=data.firstname %></th>
+        </tr>
+        <tr>
+            <th>lastname</th>
+            <th><%=data.lastname %></th>
+        </tr>
+        <tr>
+            <th>age</th>
+            <th> <%=data.age %></th>
+        </tr>
+        <tr>
+            <th>phonenumber</th>
+            <th><%=data.phonenumber %></th>
+        </tr>
+        <tr>
+            <th>email</th>
+            <th><%=data.email %></th>
+        </tr>
+        <tr>
+            <th>gender</th>
+            <th><%=data.gender %></th>
+        </tr>
+        <tr>
+            <th>hobbies</th>
+            <th><%=data.hobbies %></th>
+        </tr>
+        <tr>
+            <th>address</th>
+            <th><%=data.address %></th>
+        </tr>
+        <!-- <tr>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>age</th>
+            <th>phonenumber</th>
+            <th>email</th>
+            <th>gender</th>
+            <th>hobbies</th>
+            <th>address</th>
+        </tr>
+        <tr>
+            <td><%=JSON.stringify(data["firstname"])%></td>
+            <td><%=JSON.stringify(data["lastname"])%></td>
+            <td><%=JSON.stringify(data["age"])%></td>
+            <td><%=JSON.stringify(data["phonenumber"])%></td>
+            <td><%=JSON.stringify(data["email"])%></td>
+            <td><%=JSON.stringify(data["gender"])%></td>
+            <td><%=JSON.stringify(data["hobbies"])%></td>
+            <td><%=JSON.stringify(data["address"])%></td>
+        </tr> -->
+    </table>
+</body>
+</html>
