@@ -14,13 +14,13 @@ router.post('/password',async (req,res)=>{
     
     let query_login=`UPDATE login SET password ='${password}' , salt_key ='${salt_key}'  WHERE email ='${req.body.email}' ;`
 
-    //console.log("query_login:"+query_login);
+    //////console.log("query_login:"+query_login);
     connectMySql.query(query_login, (err, result) => {
         if(err){
-            //console.log("err:"+err);
+            //////console.log("err:"+err);
             res.render('component/register/password',{email:req.body.email ,err:"something is wrong"})
         }
-        //console.log("err:"+JSON.stringify(result));
+        //////console.log("err:"+JSON.stringify(result));
         res.render('login',{err:""})
     })
 })

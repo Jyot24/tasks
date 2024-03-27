@@ -56,7 +56,7 @@ router.all('/verifyUser',(req,res)=>{
    
     // let query_verify_user=`SELECT * FROM users where email='${req.body.email}' and activation_code='${req.body.activation_code}' and status = '0';`
     connectMySql.query(query_verify_user, (err, result) => {
-        //console.log("hittt"+JSON.stringify(result)+query_verify_user);
+        //////console.log("hittt"+JSON.stringify(result)+query_verify_user);
         if(err){
             res.render('component/register/verifyUser',{email:email ,err:"invalid credentials"})
             // var success=false;
@@ -114,7 +114,7 @@ router.post('/createPassword',async (req,res)=>{
     let query_login=`INSERT INTO login (email,password,salt_key) VALUES ('${req.body.email}','${password}','${salt_key}');`
     connectMySql.query(query_login, (err, result) => {
         if(err){
-            ////console.log("err:"+err);
+            ////////console.log("err:"+err);
             res.render('component/register/password',{email:req.body.email ,err:"something is wrong"})
         }
         res.render('login',{err:""})

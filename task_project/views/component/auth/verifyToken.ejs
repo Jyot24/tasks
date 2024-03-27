@@ -30,7 +30,7 @@
         .then((response) => {
             return response.json()
         }).then((data) => {
-            ////console.log(JSON.stringify(data));
+            ////////console.log(JSON.stringify(data));
 
             document.getElementById('set').innerHTML = `<a href="/expire/verifyUser/?email=${email}&activation_code=${data.activation_code}&forgot=true">click to verify</a>`
         })

@@ -12,7 +12,7 @@ const {
 router.get('/', verifyAuth_is_login,async (req,res)=>{
     localStorage.clear();
     // res.end()
-    ////console.log("logout");
+    ////////console.log("logout");
     res.redirect('/login')
 })
 

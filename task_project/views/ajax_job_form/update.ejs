@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOB application</title>
+    <link rel="stylesheet" href="/css/navbar.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .flex-container>div {
+            margin: 10px;
+            padding: 25px;
+            font-size: 15px;
+        }
+
+        .error {
+            /* width: 80px; */
+            font-size: 8px;
+        }
+
+        legend {
+            color: rgb(0, 0, 0);
+        }
+
+        label {
+            margin: 30px;
+            display: inline-block;
+            text-align: right;
+        }
+
+        input,
+        textarea,
+        select {
+            display: inline-block;
+            text-align: left;
+
+        }
+
+        span {
+            position: absolute;
+            text-align: left;
+            /* margin-top: 30px; */
+            /* display: inline-block; */
+            /* text-align: center;
+    z-indEx:  1; */
+        }
+
+        fieldset:nth-of-type(odd) {
+            background-color: rgb(235, 176, 132);
+        }
+
+        fieldset:nth-of-type(even) {
+            background-color: rgb(178, 235, 132);
+        }
+
+        input[type=submit] {
+            width: 100%;
+            text-align: center;
+            font-size: 40px;
+            color: aliceblue;
+            background-color: rgb(7, 98, 98);
+        }
+
+        button {
+            height: 20px;
+            width: 100px;
+        }
+
+        /* .entry {
+            text-align: left;
+            padding-top: 0px;
+            padding-bottom: 1px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 15px;
+            font-family: Book Antiqua;
+            width: 550px;
+            height: 500px;
+            overflow: auto;
+            margin: auto;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <%- include('component/Navbar'); %>
+        <div class="alert alert-danger alert-dismissible" style="display:none;" id="danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>error!</strong> <span id="alert-danger"></span>
+        </div>
+
+        <div class="alert alert-success alert-dismissible" style="display:none;" id="success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> <span id="alert-success"></span>
+        </div>
+        <!-- <div class="alert alert-success">
+        <strong>Success!</strong> <
+      </div> -->
+        <h1 style="text-align: center;">JYOT KHANT - 24DEV057</h1>
+        <h4 style="text-align: center;">Job Application Form</h4>
+        <div style="margin: 10px; padding: 20px;">
+
+           
+            <fieldset class="entry" style="margin: 10px; padding: 10px;" id="basic_details">
+                <legend>Basic Detail</legend>
+                <div style="display: flex;" class="flex-container">
+                    <div>
+                        <label for="first_name"> first_name Name:</label><span class="error first_name"
+                            id="error-first_name"></span><input name="first_name" type="text" id="first_name"
+                            class="field-required basic_details" placeholder="Ex: Jyot" value=""><br>
+                        <label for="designation"> designation:</label><span class="error designation"
+                            id="error-designation"></span><input name="designation" type="text" id="designation"
+                            placeholder="Ex: devlopment" class="field-required basic_details"><br>
+                        <label for="email"> email:</label><span class="error  email" id="error-email"></span><input
+                            name="email" type="text" id="email" class="field-required basic_details"
+                            placeholder="Ex: abc@gmail.com"><br>
+                        <label for="phoneNumber"> phoneNumber Number:</label><span class="error phoneNumber-number"
+                            id="error-phoneNumber"></span><input name="phoneNumber" type="text" maxlength="10"
+                            id="phoneNumber" class="field-required basic_details" placeholder="Ex: 9876543210"><br>
+                        <label for="dob">dob</label><span class="error dob" id="error-dob"></span><input type="text"
+                            name="dob" id="dob" class="field-required basic_details" placeholder="Ex: YYYY-MM-DD"><br>
+                        <!-- <%-gender %> -->
+
+                        <label for="gender"> gender:</label><input type="radio" name="gender" class="basic_details"
+                            id="male" value="male" checked>male<input type="radio" name="gender" class="basic_details"
+                            id="female" value="female" checked>female
+                        <br> <br>
+
+
+                        <%-relation %>
+                            <br>
+
+                            <%if(type=="update"){%>
+                                <button onclick="update_record('basic_details')">
+                                    update_record
+                                </button>
+                                <%}%>
+                    </div>
+                    <div>
+                        <label for="last_name">last_name Name:</label>
+                        <span class="error last_name" id="error-last_name"></span><input
+                            class="field-required basic_details" name="last_name" type="text" id="last_name"
+                            placeholder="Ex: Khant"><br>
+                        <label for="address1">Address1:</label>
+                        <span class="error address1 " id="error-address1 "></span><input
+                            class="field-required basic_details" name="address1" id="address1"
+                            placeholder="Ex: a-204,valsad"></input>
+                        <br>
+                        <label for="address2">Address2:</label>
+
+                        <span class="error address2" id="error-address2"></span><input
+                            class="field-required basic_details" name="address2" id="address2"
+                            placeholder="Ex: a-204,valsad"></input>
+                        <br>
+                        <label for="city">City:</label>
+
+                        <span class="error city" id="error-city"></span><select name="city" id="city"
+                            class="field-required basic_details">
+                            <option value="valsad" selected>valsad</option>
+                            <option value="surat">surat</option>
+                        </select><br>
+                        <label for="state">state:</label>
+
+                        <span class="error state" id="error-state"></span><select name="state" id="state"
+                            class="field-required basic_details">
+                            <option value="gujrat" selected>gujrat</option>
+                            <option value="UP" selected>UP</option>
+                        </select>
+                        <br>
+                        <label for="zip_id">zip_id : </label>
+
+                        <!-- dob <input type="date" name="dob" id=""> -->
+                        <span class="error zip_id" id="error-zip_id"></span><input
+                            class="field-required check_is_number basic_details" name="zip_id" id="zip_id" type="text"
+                            placeholder="Ex: "><br </div>
+                    </div>
+
+                    <div>
+                        <button class="next" id="submit">Next</button>
+
+                    </div>
+
+
+            </fieldset>
+
+            <fieldset id="course_details" class="entry" style="display:none;">
+                <legend>Education Detail: <div onclick="createNode('course','course-chlid')">+</div>
+                </legend>
+                <span id="check-all-fill-or-not" class="error"></span>
+                <div id="course">
+                    <%if(!(type=="update")){%>
+                        <div id="course-chlid">
+
+                            <!-- <label for="course_name">Name of Board :</label> -->
+                            <%- course_name %>
+                                <!-- <span class="error course_name" id="error-course_name"></span> <input name="course_name"
+                                id="course_name" class=" check-all-fill-or-not" type="text" placeholder="Ex: XYZ"> -->
+
+                                <label for="passing_year">Passiong Year:</label>
+                                <span class="error passing_year" id="error-passing_year"></span> <input
+                                    name="passing_year" id="passing_year" class="check-all-fill-or-not course_details"
+                                    type="text" min="1900" max="2099" step="1" value="2018" placeholder="Ex: YYYY">
+
+                                <label for="percentage">Percentage:</label>
+                                <span class="error percentage" id="error-percentage"></span> <input name="percentage"
+                                    id="percentage" class=" check-all-fill-or-not course_details" id="percentage"
+                                    type="text" min="0" max="100" placeholder="Ex: 00.00">
+                                <hr />
+
+                        </div>
+                        <%}%>
+                </div>
+                <%if(type=="update"){%>
+                    <button onclick="update_record('course_details')">
+                        update_record
+                    </button>
+                    <%}%>
+                        <button class="back">Back</button>
+                        <button class="next">Next</button>
+            </fieldset>
+
+
+            <fieldset id="work_experience" class="entry" style="display:none;">
+                <legend onclick="createNode('workExperience','workExperience-child')"><b>+</b>
+                    <span>work Experience</span>
+                </legend>
+                <!-- <legend>work Experience</legend> -->
+                <span id="check-all-fill-or-not-work" class="error"></span>
+                <div id="workExperience">
+
+                    <span id="error-checked-date" class="error"></span>
+                    <div id="workExperience-child">
+                        <br>
+                        company name <input name="company" type="text"
+                            class="check-all-fill-or-not-work work_experience" placeholder="Ex: xyz" id="company">
+                        designation <input name="workdesignation" class="check-all-fill-or-not-work work_experience"
+                            type="text" placeholder="Ex: devlopment" id="workdesignation">
+                        From <input name="From" type="text" class="check-all-fill-or-not-work work_experience"
+                            placeholder="Ex: YYYY-MM-DD" id="From">
+                        To <input name="to" type="text" class="check-all-fill-or-not-work work_experience"
+                            class="work_experience" placeholder="Ex: YYYY-MM-DD" id="to">
+                    </div>
+                    <%if(type=="update"){%>
+                        <button onclick="update_record('work_experience')">
+                            update_record
+                        </button>
+                        <%}%>
+                </div>
+                <button class="back">Back</button>
+                <button class="next">Next</button>
+            </fieldset>
+
+
+            <fieldset id="language" class="entry" style="display:none;">
+                <legend>Language KNown</legend>
+                <%- languageknown %>
+                    <%if(type=="update"){%>
+                        <button onclick="update_record('language')">
+                            update_record
+                        </button>
+                        <%}%>
+
+                            <button class="back">Back</button>
+                            <button class="next">Next</button>
+            </fieldset>
+
+
+            <fieldset id="technologies" class="entry" style="display:none;">
+                <legend>Technologies you know</legend>
+                <%-technologies %>
+                    <%if(type=="update"){%>
+                        <button onclick="update_record('technologies')">
+                            update_record
+                        </button>
+                        <%}%>
+
+
+                            <button class="back">Back</button>
+                            <button class="next">Next</button>
+            </fieldset>
+
+            <fieldset id="referance_contact" class="entry" style="display:none;">
+                <legend onclick="createNode('Referance','Referance-chlid')"><b>+</b><span>Referance
+                        Contact</span></legend>
+                <span class="error" id="check-all-fill-or-not-Referance"></span>
+                <!-- <legend>Referance Contact</legend> -->
+                <div id="Referance">
+                    <div id="Referance-chlid">
+                        <br>
+                        Name <input name="ReferanceName" id="ReferanceName" type="text"
+                            class="check-all-fill-or-not-Referance referance_contact" placeholder="Ex: xyz">
+                        Contact Number <span class="error phoneNumber-number"
+                            id="error-Referance-phoneNumber "></span><input name="ReferanceContact"
+                            id="ReferanceContact" placeholder="Ex: 9876543210"
+                            class="check-all-fill-or-not-Referance phoneNumber-number referance_contact" type="text">
+                        Relation <input name="Relation" id="Relation" type="text"
+                            class="check-all-fill-or-not-Referance referance_contact" placeholder="Ex: friend"><br>
+
+                    </div>
+                    <%if(type=="update"){%>
+                        <button onclick="update_record('referance_contact')">
+                            update_record
+                        </button>
+                        <%}%>
+                </div>
+                <button class="back">Back</button>
+                <button class="next">Next</button>
+            </fieldset>
+
+            <fieldset id="preferances" class="entry" style="display:none;">
+                <legend>Preferances</legend>
+                <div style="display: flex;" class="flex-container">
+
+                    <div>
+
+                        <%-perefed %>
+
+                    </div>
+                    <div>
+
+                        <label for="Noticeperiod">Notice period
+                            :</label>
+                        <span class="error Noticeperiod" id="error-Noticeperiod"></span><input id="Noticeperiod"
+                            name="Noticeperiod" class="field-required check_is_number preferances" type="text"
+                            placeholder="Ex: 4(in month)"><br>
+
+                        <label for="ExpactedCtc">Expacted CTC :</label>
+                        <span class="error ExpactedCtc" id="error-ExpactedCtc"></span> <input id="ExpactedCtc"
+                            name="ExpactedCtc" class="field-required check_is_number preferances" type="text"
+                            placeholder="Ex: 4.2(Lakh)"><br>
+
+                        <label for="CurrentcTC">Current CTC:</label>
+                        <span class="error CurrentcTC" id="error-CurrentcTC"></span><input id="CurrentcTC"
+                            name="CurrentcTC" class="field-required check_is_number preferances" type="text"
+                            placeholder="Ex: 4.2(Lakh)">
+                    </div>
+                    <div>
+                        <%- department %>
+                            <br>
+                    </div>
+
+                    <%if(type=="update"){%>
+                        <button onclick="update_record('preferances')">
+                            update_record
+                        </button>
+                        <%}%>
+                </div>
+                <button class="back">Back</button>
+                <button onclick="submitForm('preferances')">submitForm</button>
+            </fieldset>
+            </form>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.js"
+            integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+            <script>
+                const enDisFields = (lang) => {
+    let subfields = document.querySelectorAll(`.${lang}`);
+
+    for (let i = 1; i < subfields.length; i++) {
+
+        if (subfields[i].disabled) {
+            subfields[i].disabled = false;
+        }
+        else {
+            subfields[i].checked = false;
+            subfields[i].disabled = true;
+        }
+    }
+}
+            </script>
+</body>
+
+<script>
+
+    let type_of_page = "<%=type%>"
+    let job_id = ""
+    var entries = document.querySelectorAll(".entry");
+    var nextButtons = document.querySelectorAll(".next");
+    var backButtons = document.querySelectorAll(".back");
+
+    let object_status = {
+        "basic_details": false,
+        "course_details": false,
+        "language": false,
+        "preferances": false,
+        "work_experience": false,
+        "referance_contact": false,
+        "technologies": false,
+    }
+
+    let insert_object_status = {
+        "basic_details": false,
+        "course_details": false,
+        "language": false,
+        "preferances": false,
+        "work_experience": false,
+        "referance_contact": false,
+        "technologies": false,
+    }
+
+    let current_data = {};
+
+    //console.log("type of page:" + type_of_page);
+
+    if (type_of_page == "update") {
+        job_id = prompt("Please enter job id", "");
+        fetch(`http://localhost:8020/ajax_job_form/read/basic_details`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ job_id: job_id }),
+        })
+            .then((response) =>
+                response.json())
+            .then(data => {
+                current_data = { ...data };
+                [...document.querySelectorAll(`.basic_details`)].map((element) => {
+                    for (let key in current_data.result[0]) {
+                        if (element.id == "dob") {
+                            element.value = (new Date(current_data.result[0]["dob"])).toISOString().split('T')[0]
+                            // //console.log(current_data.result[0]["dob"]);
+                        }
+
+                        else if (key == element.id) {
+                            element.value = current_data.result[0][key]
+                            break;
+                        }
+                    }
+
+                })
+            });
+
+
+    }
+
+
+
+
+    nextButtons.forEach(function (button, index) {
+        button.addEventListener("click", async function (e) {
+            // validateForm()
+            //  //console.log("validateForm()"+validateForm());
+            //  if(!validateForm()){
+            //             // save(entries[index].id)
+            //            return
+            //         }
+
+            entries[index].style.display = "none";
+            entries[index + 1].style.display = "block";
+
+            let next_data = {}
+
+            if (type_of_page == "update") {
+                //console.log("hi vyuuy update");
+                getRecord(entries[index + 1].id, true)
+            } else {
+                if (insert_object_status[entries[index].id]) {
+                    //console.log("hi vyuuy");
+                    update_record(entries[index].id)
+                    
+                } else {
+                    save(entries[index].id)
+                }
+
+
+
+            }
+
+
+
+
+        });
+    });
+
+    backButtons.forEach(function (button, index) {
+        button.addEventListener("click", function () {
+            entries[index + 1].style.display = "none";
+            entries[index].style.display = "block";
+
+            
+            
+                getRecord(entries[index].id, false)
+
+            // }
+
+        });
+    });
+
+    function submitForm(id){
+        if (insert_object_status[id]) {
+                    update_record(id)
+                } else {
+                    save(id)
+        }
+        alert('your response is save successfully!')
+    }
+
+    // if (entries[index].id == "course_details") {
+    //     //console.log("(value.hasOwnProperty(element.id" + value.hasOwnProperty(element.id));
+    //     if (value.hasOwnProperty(element.id)) {
+
+    //         value[element.id].push(element.value)
+    //         //console.log("course_details" + JSON.stringify(value))
+
+    //     } else {
+    //         // value[element.id]=[element.value]
+    //         value[element.id] = []
+    //         value[element.id].push(element.value)
+    //         //console.log("course_details ELSE" + JSON.stringify(value))
+
+    //     }
+
+
+    // }
+
+    async function save(id) {
+        let value = await record_object(id);
+
+        //console.log("save value:" + JSON.stringify(value));
+        insert_object_status[id] = true
+        fetch(`http://localhost:8020/ajax_job_form/save/${id}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(value),
+        })
+            .then((response) =>
+                response.json())
+            .then(data => {
+                //console.log("save fetch:" + JSON.stringify(data));
+                // job_id = data.job_id
+                if (job_id == "") {
+                    job_id = data.job_id
+                }
+
+                if (!data.success) {
+                    document.getElementById('danger').style.display = ""
+                    document.getElementById('alert-danger').innerText = JSON.stringify(data.err)
+                }
+                else {
+                    document.getElementById('success').style.display = ""
+                    // document.getElementById('alert-success').innerText=JSON.stringify(data.result)
+                }
+            })
+    }
+
+    async function record_object(id) {
+        return new Promise((resolve, reject) => {
+            let value = {};
+
+            [...document.querySelectorAll(`.${id}`)].map((element) => {
+
+
+                // if (job_id != "") {
+                value["job_id"] = job_id
+                // }
+
+                // let is_checked = document.getElementById(`${element.id}`)
+
+                try {
+                    if (id == "course_details" || id == "referance_contact") {
+                        if (value.hasOwnProperty(element.id)) {
+                            value[element.id].push(element.value)
+
+                        } else {
+                            value[element.id] = []
+                            value[element.id].push(element.value)
+                        }
+
+
+                    }
+                    else if (id == "work_experience") {
+                        if (value.hasOwnProperty(element.id)) {
+                            value[element.id].push(element.value)
+
+
+
+                        } else {
+                            value[element.id] = []
+                            value[element.id].push(element.value)
+
+                        }
+
+
+                    }
+
+                    else if (id == "technologies") {
+                        let arr_radio_id = []
+                        arr_radio_id.push(element.id)
+                        arr_radio_id.push(element.id + "Beginer")
+                        arr_radio_id.push(element.id + "Mideator")
+                        arr_radio_id.push(element.id + "Expert")
+
+
+                        arr_radio_id.map((radio_id) => {
+                            if (document.getElementById(`${radio_id}`).checked) {
+                                value[element.id] = element.value
+                                value[element.id + "level"] = document.getElementById(`${radio_id}`).value
+
+                            } if (document.getElementById(`${radio_id}`).value == element.id + "level") {
+                                value[element.id] = ""
+                                value[element.id + "level"] = ""
+                            }
+                        })
+
+
+
+                    } else if (id == "language") {
+                        let is_checked = document.getElementById(`${element.id}`)
+
+                        if (is_checked.checked) {
+                            value[element.id] = element.value
+                        } else {
+                            value[element.id] = ""
+                        }
+
+                    }else if (id == "preferances") {
+                            [...document.querySelectorAll(`.${id}`)].map((element) => {
+                                value[element.id] = element.value
+                            })
+                        }
+                    
+                    else {
+                        if (element.id == "male" || element.id == "female") {
+                            if (document.getElementById(`${element.id}`).checked) {
+                                value["gender"] = element.value
+                            }
+                        } else {
+                            value[element.id] = element.value
+
+                        }
+                    }
+                } catch (error) {
+
+                }
+
+            })
+            resolve(value)
+
+        })
+    }
+
+    async function update_record(id) {
+
+        let value = await record_object(id);
+
+        //console.log("record_object:" + JSON.stringify(value));
+
+        // //console.log(`http://localhost:9090/update/${id}`)
+
+
+        fetch(`http://localhost:8020/ajax_job_form/update/${id}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(value),
+        })
+            .then((response) =>
+                response.json())
+            .then(data => {
+
+                getRecord(id, false)
+                if (!data.success) {
+                    document.getElementById('danger').style.display = ""
+                    document.getElementById('alert-danger').innerText = JSON.stringify(data.err)
+                }
+                else {
+                    document.getElementById('success').style.display = ""
+                    // document.getElementById('alert-success').innerText=JSON.stringify(data.result)
+                }
+            })
+    }
+
+    function getRecord(id, check) {
+        //console.log("job_id getrecord:" + job_id);
+        fetch(`http://localhost:8020/ajax_job_form/read/${id}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ job_id: job_id }),
+        })
+            .then((response) =>
+                response.json())
+            .then(data => {
+
+                next_data = { ...data };
+
+                if (id == "course_details") {
+
+                    // const para = document.createElement("div");
+                    // para.className = "course-chlid";
+
+                    //console.log("fetch:" + JSON.stringify(object_status[id]));
+
+                    if (!object_status[id]) {
+                        if (next_data.result.length > 0) {
+                            next_data.result.map((course) => {
+
+                                //console.log("course[passing_year]:" + course["passing_year"]);
+                                let string_course = ""
+                                const para = document.createElement("div");
+                                para.className = "course-chlid";
+                                string_course += `
+
+                                    <label for="course_name">Name of Board :</label>
+                                    <%- course_name %>
+                                    <input type="hidden" class="course_details" name="key_course" id="key_course" value="${course["id"]}">
+                                    <label for="passing_year">Passiong Year:</label>
+                                    <span class="error passing_year" id="error-passing_year"></span> <input name="passing_year"
+                                        id="passing_year" class="check-all-fill-or-not course_details" type="text" min="1900"
+                                        max="2099" step="1"  placeholder="Ex: YYYY" value="${course["passing_year"]}">
+
+                                    <label for="percentage">Percentage:</label>
+                                    <span class="error percentage" id="error-percentage"></span> <input name="percentage"
+                                        id="percentage" class=" check-all-fill-or-not course_details" id="percentage"
+                                        type="text" min="0" max="100" placeholder="Ex: 00.00" value="${course["percentage"]}" >
+                                    <hr />
+`
+                                para.innerHTML = string_course
+
+                                document.getElementById('course').appendChild(para);
+                                object_status["course_details"] = true
+
+                            })
+                        }
+
+
+
+                    }
+                    else {
+                        let current_data_length_of_course = 0;
+                        [...document.querySelectorAll(`.${id}`)].map((element) => {
+                            if (element.id == "course_name") {
+
+                                const newOption = document.createElement('option');
+
+                                const optionText = document.createTextNode(`${next_data.result[current_data_length_of_course]["name"]}`);
+
+                                newOption.setAttribute('selected', '')
+                                newOption.setAttribute('hidden', '')
+                                newOption.appendChild(optionText);
+                                newOption.setAttribute('value', `${next_data.result[current_data_length_of_course]["name"]}`);
+
+                                element.appendChild(newOption);
+                            }
+
+                            if (element.id == "passing_year") {
+                                element.value = next_data.result[current_data_length_of_course]["passing_year"]
+
+                                //console.log("next_data.result: " + JSON.stringify(next_data.result) + "passing_year:" + next_data.result[0]["passing_year"] + ":" + next_data.result[1]["passing_year"]);
+
+                                //console.log("passing_year:" + next_data.result[current_data_length_of_course]["passing_year"] + current_data_length_of_course);
+                            }
+
+                            if (element.id == "percentage") {
+                                element.value = next_data.result[current_data_length_of_course]["percentage"]
+                                //console.log("percentage:" + next_data.result[current_data_length_of_course]["percentage"]);
+
+                                current_data_length_of_course++
+                            }
+
+                            // else if (key == element.id) {
+                            //     element.value = next_data.result[key][key]
+                            //     break;
+                            // }
+                            // //console.log("KEY:" + key + " element.id:" + element.id);
+                        })
+                        // }
+                    }
+
+
+                    // else {
+                    //     [...document.querySelectorAll(`.${id}`)].map((element) => {
+
+                    //     })
+                    // }
+                    // for (let key in next_data.result[0]) {
+                    //     if (element.id == "course_name") {
+                    //         //console.log("course_name:"+next_data.result.length);
+
+                    //         const newOption = document.createElement('option');
+
+                    //         const optionText = document.createTextNode(`${next_data.result[0]["name"]}`);
+
+                    //         newOption.setAttribute('selected', '')
+                    //         newOption.setAttribute('hidden', '')
+                    //         newOption.appendChild(optionText);
+                    //         newOption.setAttribute('value', `${next_data.result[0][key]}`);
+
+                    //         element.appendChild(newOption);
+                    //     }
+
+                    //     else if (key == element.id) {
+                    //         element.value = next_data.result[0][key]
+                    //         break;
+                    //     }
+                    //     // //console.log("KEY:" + key + " element.id:" + element.id);
+                    // }
+                    // })
+                }
+
+                if (id == "work_experience") {
+                    [...document.querySelectorAll(`.${id}`)].map((element) => {
+
+                        if (element.id == "company") {
+                            element.value = next_data.result[0]["company_name"]
+                        }
+
+                        if (element.id == "workdesignation") {
+                            element.value = next_data.result[0]["designation"]
+
+                        }
+
+                        if (element.id == "From") {
+                            element.value = (new Date(next_data.result[0]["w_from"])).toISOString().split('T')[0]
+                            // element.value = next_data.result[0]["w_from"]
+
+                        }
+
+                        if (element.id == "to") {
+                            element.value = (new Date(next_data.result[0]["w_to"])).toISOString().split('T')[0]
+
+                            // element.value = next_data.result[0]["w_to"]
+
+                        }
+
+                    })
+                }
+
+                if (id == "language") {
+                    let combo_language = next_data.result[0]
+                    for (const key in next_data.result) {
+                        // console.log("combo_language:" + key + "combo_language[key].language_name:" + next_data.result[key]["language_name"]);
+                        document.getElementById(`${next_data.result[key]["language_name"]}`).checked = true;
+                        let subfields = document.querySelectorAll(`.${next_data.result[key]["language_name"]}`);
+
+                        for (let i = 1; i < subfields.length; i++) {
+                            subfields[i].disabled = false;
+                        }
+                        document.getElementById(`${next_data.result[key].language_name}${next_data.result[key].l_read}`).checked = true;
+                        document.getElementById(`${next_data.result[key].language_name}${next_data.result[key].l_write}`).checked = true;
+                        document.getElementById(`${next_data.result[key].language_name}${next_data.result[key].l_speak}`).checked = true;
+
+                    }
+
+                }
+
+
+                if (id == "technologies") {
+                    console.log("n8h");
+                    for (let i in next_data.result) {
+                        console.log(i);
+                        document.getElementById(`${next_data.result[i].name}`).checked = true;
+                        let subfields = document.querySelectorAll(`.${next_data.result[i].name}`);
+
+                        for (let i = 1; i < subfields.length; i++) {
+
+
+                            subfields[i].disabled = false;
+
+                        }
+                        document.getElementById(`${next_data.result[i].name}${next_data.result[i].level}`).checked = true
+                    }
+                }
+
+
+                if (id == "referance_contact") {
+                    [...document.querySelectorAll(`.${id}`)].map((element) => {
+
+
+
+
+                        if (element.id == "ReferanceName") {
+                            element.value = next_data.result[0]["name"]
+                        }
+
+                        if (element.id == "ReferanceContact") {
+                            element.value = next_data.result[0]["contactNumber"]
+
+                        }
+
+                        if (element.id == "Relation") {
+                            element.value = next_data.result[0]["relation"]
+
+                        }
+
+
+
+                    })
+
+
+                }
+
+
+                if (id == "preferances") {
+                    [...document.querySelectorAll(`.${id}`)].map((element) => {
+
+                        if (element.id == "preferdlocation") {
+                            // //console.log("course_name:");
+
+                            const newOption = document.createElement('option');
+
+                            const optionText = document.createTextNode(`${next_data.result[0]["preferd_location"]}`);
+
+                            newOption.setAttribute('selected', '')
+                            newOption.setAttribute('hidden', '')
+                            newOption.appendChild(optionText);
+                            newOption.setAttribute('value', `${next_data.result[0]["preferd_location"]}`);
+
+                            element.appendChild(newOption);
+                        }
+
+                        if (element.id == "Noticeperiod") {
+                            element.value = next_data.result[0]["notice_period"]
+                        }
+
+                        if (element.id == "ExpactedCtc") {
+                            element.value = next_data.result[0]["expacted_ctc"]
+
+                        }
+
+                        if (element.id == "CurrentcTC") {
+                            element.value = next_data.result[0]["current_ctc"]
+
+                        }
+
+                        if (element.id == "department") {
+                            // //console.log("course_name:");
+
+                            const newOption = document.createElement('option');
+
+                            const optionText = document.createTextNode(`${next_data.result[0]["department"]}`);
+
+                            newOption.setAttribute('selected', '')
+                            newOption.setAttribute('hidden', '')
+                            newOption.appendChild(optionText);
+                            newOption.setAttribute('value', `${next_data.result[0]["department"]}`);
+
+                            element.appendChild(newOption);
+                        }
+                    })
+                }
+
+
+                // referance_contact
+            });
+
+    }
+</script>
+<script>
+    function createNode(parent, chlid) {
+        if (parent == "") {
+
+
+            const para = document.createElement("div");
+            para.className = "course-chlid";
+            let string_course = `<label for="course_name">Name of Board :</label><%- course_name %>
+<input type="hidden" class="course_details" name="key_course" id="key_course" value="">
+<label for="passing_year">Passiong Year:</label>
+<span class="error passing_year" id="error-passing_year"></span> <input name="passing_year"
+                                        id="passing_year" class="check-all-fill-or-not course_details" type="text" min="1900"
+                                        max="2099" step="1"  placeholder="Ex: YYYY" value="">
+
+<label for="percentage">Percentage:</label>
+<span class="error percentage" id="error-percentage"></span> <input name="percentage"
+                                        id="percentage" class=" check-all-fill-or-not course_details" id="percentage"
+                                        type="text" min="0" max="100" placeholder="Ex: 00.00" value="" >
+<hr />
+`
+            para.innerHTML = string_course
+
+            document.getElementById(parent).appendChild(para);
+
+        } else {
+            const node = document.getElementById(chlid);
+            const clone = node.cloneNode(true);
+            document.getElementById(parent).appendChild(clone);
+
+            clone.childNodes.forEach(element => {
+                if (element.nodeName == 'INPUT')
+                    element.value = ''
+            })
+        }
+
+    }
+</script>
+<!-- <script src="/js/job.js"></script> -->
+</html>

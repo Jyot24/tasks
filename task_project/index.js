@@ -22,6 +22,11 @@ app.use('/dynamic_table',require('./routes/tasks/dynamic_table/dynamic_table'))
 app.use('/kuku_cube',require('./routes/tasks/kuku cube/kuku cube'))
 app.use('/tic_tak_toc',require('./routes/tasks/tic tak toc/tic_tak_toc'))
 app.use('/delimiter_search',require('./routes/tasks/delimiter_search/auth'))
+app.use('/ajax_job_form',require('./routes/tasks/ajax_job_form/form'))
+app.use('/ajax_job_form/save',require('./routes/tasks/ajax_job_form/save'))
+app.use('/ajax_job_form/read',require('./routes/tasks/ajax_job_form/getRecord'))
+app.use('/ajax_job_form/update',require('./routes/tasks/ajax_job_form/updateRecord'))
+
 
 //-----------------------------------------------------------------------------------------------
 app.use('/register' ,require('./routes/register/register'))
@@ -47,5 +52,5 @@ app.use('/auth',require('./routes/navigate_after_login'))
 
 
 app.listen(port,()=>{
-    console.log(`app listeing at http://localhost:${port}`);
+    //console.log(`app listeing at http://localhost:${port}`);
 })
