@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>javascript event</title>
+        <style>
+ 
+         tr{
+            color: rgba(255, 255, 255, 0.968);
+            height: 100px;
+        }
+         td { 
+            padding: 10px;
+        } 
+
+        table, th, td {
+        border: 1px solid rgb(95, 159, 35);
+        }
+        table {
+        border-spacing: 15px;
+        table-layout: fixed;
+        background-color: aliceblue;
+
+        }
+                #onscroll {
+        border: 1px solid black;
+        width: 200px;
+        height: 100px;
+        overflow: scroll;
+        }
+
+        tr:nth-child(odd) {background-color: #FFA500;}
+        tr:nth-child(even) {background-color: #41d726;}
+    </style>
+
+    </head>
+    <body onunload="alert('onunload is triggered...')"
+        ononline="alert('ononline is triggered...')"
+        onoffline="alert('onoffline is triggered...')"
+        onafterprint="alert('onafterprint is triggered...')"
+        onload="alert('onload is triggered...')"
+        onresize="alert('onresize is triggered...')"
+        onpagehide="alert('onpagehide is triggered...')"
+        onpageshow="alert('onpageshow is triggered...')"
+        onhashchange="alert('onhashchange is triggered...')">
+        
+        <table style="width:100%" cellspacing="2" cellpadding="2">
+            <tr>
+                <td><button
+                        onclick="alert('onclick is triggered...')">onclick</button></td>
+                <td>onchange:- <select id="mySelect"
+                        onchange="alert('onchange is triggered...')">
+                        <option value="cvm">cvm</option>
+                        <option value="gtu">gtu</option>
+                    </select></td>
+                <td>onload</td>
+                <td><img onmouseleave="alert('onmouseleave is triggered...')"
+                        border="0" alt="onmouseleave" width="32"
+                        height="32"></td>
+            </tr>
+
+            <tr>
+                <td> <p
+                        ondblclick="alert('ondblclick is triggered...')">Double-click
+                        me</p> </td>
+                <td> <p draggable="true"
+                        ondrag="alert('ondrag is triggered...')">ondrag me!</p>
+                </td>
+                <td> <p draggable="true"
+                        ondragend="alert('ondragend is triggered...')">ondragend
+                        me!</p> </td>
+                <td><img alt="onmouseenter"
+                        onmouseenter="alert('onmouseenter is triggered...')"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text"
+                        onfocus="alert('onfocus is triggered...')"
+                        placeholder="onfocus"></td>
+                <td><input type="text" value="Select some of the text"
+                        onselect="alert('onselect is triggered...')"></td>
+                <td><div id="onscroll"
+                        onscroll="alert('onscroll is triggered...')">sfvbhfrtj9rtfjhu09
+                        oibj09irtjuh6t09r j9ij89 Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit. Natus illum est magnam,
+                        dolor quasi quibusdam quos expedita, placeat, debitis
+                        libero rerum! Sed, officiis, praesentium iusto tempora
+                        dolores repellat doloremque aliquam provident maxime
+                        illum dolor. Omnis, repellendus exercitationem earum
+                        distinctio veniam eaque ut unde repellat?
+                        <br><br>
+                        'Whenever you feel like criticizing anyone,' he told me,
+                        just remember that all the people in this world haven't
+                        had the advantages that you've had.'</div></td>
+                <td>onresize</td>
+            </tr>
+
+            <tr>
+                <td> <input type="text" oncut="alert('oncut is triggered...')"
+                        value="Try to cut this text">oncut</td>
+                <td> <input type="text" oncopy="alert('oncopy is triggered...')"
+                        value="Try to copy me"> oncopy</td>
+                <td> <input type="text"
+                        oninput="alert('oninput is triggered...')"
+                        placeholder="oninput"> oninput</td>
+                <td> <input type="text" onblur="alert('onblur is triggered...')"
+                        placeholder="onblur"> onblur</td>
+            </tr>
+
+            <tr>
+                <td><p
+                        onmousedown="alert('onmousedown is triggered...')">onmousedown</p></td>
+                <td> <input type="text"
+                        onkeydown="alert('onkeydown is triggered...')"
+                        placeholder="onkeydown"> </td>
+                <td> <input type="text"
+                        onkeypress="alert('onkeypress is triggered...')"
+                        placeholder="onkeypress"> </td>
+                <td> <input type="text"
+                        onkeyup="alert('onkeyup is triggered...')"
+                        placeholder="onkeyup"> </td>
+            </tr>
+            <tr>
+                <td><div onmousemove="alert('onmousemove is triggered...')"
+                        onmouseout="clearCoor()">onmousemove</div></td>
+                <td><div
+                        onmouseout="alert('onmouseout is triggered...')">onmouseout</div></td>
+                <td><details ontoggle="alert('ontoggle is triggered...')">
+                        <summary> 2024.</summary>
+                        <p> All Rights Reserved. jyot khant</p>
+                        <p>gycuqe uihwuiqdhqw hqwufhqu8i</p>
+                    </details></td>
+                <td> <input type="text"
+                        onpaste="alert('onpaste is triggered...')"
+                        value="Try to paste ">onpaste</td>
+
+            </tr>
+            <tr>
+                <td>unload</td>
+                <td>onpageshow</td>
+                <td></td>
+                <td><input type="text"
+                        onemptied="alert('onemptied is triggered...')">onemptied</td>
+            </tr>
+            <tr>
+                <td>onoffline</td>
+                <td>ononline</td>
+                <td>onpagehide</td>
+                <td>Call a function when the anchor part has been changed
+                    onhashchange</td>
+            </tr>
+        </table>
+
+        <script>
+        
+            // onclick=()=>{
+            //     alert("onclick is triggered...");
+            // }
+            
+            // onmousedown=()=>{
+            //     alert("onmousedown is triggered...");
+            // }
+            
+            // onkeydown=()=>{
+            //     alert("onkeydown is triggered...");
+            // }
+    
+            // onkeypress=()=>{
+            //     alert("onkeypress is triggered...");
+            // }
+            // onkeyup=()=>{
+            //     alert("onkeyup is triggered...");
+            // }
+            
+            // onafterprint =()=>{
+            //      alert("onafterprint is triggered...");
+            //  }
+            
+            //  onblur=()=>{
+            //     alert("onblur is trionblurgered...");
+            // }
+            
+            // oninput=()=>{
+            //     alert("oninput is triggered...");
+            // }
+            
+            // oncopy=()=>{
+            //     alert("oncopy is triggered...");
+            // }
+            
+            // oncut=()=>{
+            //     alert("oncut is triggered...");
+            // }
+            
+            // onchange=()=>{
+            //     alert("onchange is triggered...");
+            // }
+
+            // ondblclick=()=>{
+            //     alert("ondblclick is triggered...");
+            // }
+
+            // ondrag=()=>{
+            //     alert("ondrag is triggered...");
+            // }
+
+            
+            
+        </script>
+    </body>
+</html>

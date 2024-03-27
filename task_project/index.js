@@ -43,6 +43,10 @@ app.use('/timezone',require('./routes/tasks/timezone/index'))
 
 app.use('/viewGrid',require('./routes/tasks/viewGrid/auth'))
 app.use('/viewGrid',require('./routes/tasks/viewGrid/page'))
+
+app.use('/event_table',require('./routes/tasks/event_table/event_table'))
+
+// event_table
 //-----------------------------------------------------------------------------------------------
 app.use('/register' ,require('./routes/register/register'))
 app.use('/login' ,require('./routes/login/login'))
