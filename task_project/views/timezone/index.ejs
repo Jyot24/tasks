@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Converting date to another timezone in JavaScript</title>
+</head>
+<body>
+   <h3>Convert date to <b id="set"></b> Time Zone using toLocaleString() Method</h3>
+   <p id="input">Local Time: </p>
+   <p id="output">America/New_York Time Zone: </p>
+
+   <label for="timezone">Choose  TimeZone</label>
+   <select name="timezone" id="timezone" onchange="changetimezone(this)">
+         <option value="" selected>----Select any one---</option>
+       <option value="Asia/Kolkata">Ahmedabad</option>
+       <option value="America/Los_Angeles">Los Angles</option>
+       <option value="Asia/Dhaka">Dhaka</option>
+       <option value="Europe/Moscow">Moscow</option>
+       <option value="Europe/London">London</option>
+       <option value="America/New_York">New_York</option>
+       <option value="Australia/Sydney">Sydney</option>
+       <option value="Australia/Adelaide" >Adelaide</option>
+       <option value="Australia/Perth" >Perth</option>
+       <option value="Australia/Melbourne" >Melbourne</option>
+       <option value="Pacific/Auckland" >Auckland</option>
+
+       <!-- America/New_York -->
+   </select>
+   <script>
+
+let time = document.getElementById("time")
+function changetimezone() {
+   let date = new Date();
+      document.getElementById("input").innerText ="Local Time: "+ date ;
+      
+     
+      let output = date.toLocaleString("en-US", {
+         timeZone: document.getElementById('timezone').value
+      });
+      
+      // display the result
+      document.getElementById("output").innerText = document.getElementById('timezone').value + ": "+ output;
+      document.getElementById("set").innerText =document.getElementById('timezone').value
+      setInterval(changetimezone,1000)
+      // changetimezone()
+}
+      // date objec
+     
+   </script>
+</body>
+</html>
+</body>
+</html>

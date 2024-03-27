@@ -1,0 +1,40 @@
+<% var current_page=CURRENT_PAGE %>
+<% var totalpageno=totalpageno %>
+<!-- <%=url%> -->
+<!-- <%=query%> -->
+<div>
+  <div>
+    <% if(current_page==1 ) {%>
+    <a href="query=<%query%>?<%=query%>:" disabled="disabled" style=" pointer-events: none;">
+      << </a>
+        <a href disabled="disabled" style=" pointer-events: none;">
+
+          < </a>
+            <%}else{ %>
+
+            <a href="/viewGrid/<%=url%>/1?query=<%=query%>">
+              << </a>
+                <a href="/viewGrid/<%=url%>/<%= current_page -1  %>?query=<%=query%>">
+
+                  < </a>
+                    <%}%>
+
+        <% if((current_page>=1) && totalpageno>=current_page
+        ){%>
+                    <span id="page"><%=current_page%></span>
+
+                    <%} else{%>
+                    <span id="page">1</span>
+                    <% } %>
+                    <% if(current_page== totalpageno) {%>
+                    <a href disabled="disabled" style=" pointer-events: none;">
+                      > </a>
+                    <a href disabled="disabled" style=" pointer-events: none;"> >> </a>
+                    <%}else{ %>
+
+                    <a href="/viewGrid/<%=url%>/<%= current_page +1 %>?query=<%=query%>"> > </a>
+                    <a href="/viewGrid/<%=url%>/<%=totalpageno%>?query=<%=query%>"> >> </a>
+                    <%}%>
+
+    </div>
+</div>

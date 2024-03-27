@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>user fetch</title>
+  <style>
+    th,
+    td,
+    table {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+
+<body>
+    😀
+  <form action="/viewGrid/viewGrid" method="post">
+    <!-- <textarea name="sql_query" id="" cols="30" rows="10"></textarea> -->
+    <input type="text" name="sql_query" size="100" placeholder="Write a query">
+    <input type="submit" value="Go">
+  </form>
+  <% try {%>
+  <%-include('./ViewGrid.ejs') %>
+  <% } catch (error) {}%>
+
+</body>
+
+</html>

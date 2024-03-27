@@ -39,6 +39,10 @@ app.use('/ajax_job_form/update',require('./routes/tasks/ajax_job_form/updateReco
 
 app.use('/html',require('./routes/tasks/html/html'))
 
+app.use('/timezone',require('./routes/tasks/timezone/index'))
+
+app.use('/viewGrid',require('./routes/tasks/viewGrid/auth'))
+app.use('/viewGrid',require('./routes/tasks/viewGrid/page'))
 //-----------------------------------------------------------------------------------------------
 app.use('/register' ,require('./routes/register/register'))
 app.use('/login' ,require('./routes/login/login'))
