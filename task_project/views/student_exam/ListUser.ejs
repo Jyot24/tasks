@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>list user</title>
+        <link rel="stylesheet" href="/student_exam/css/listuser.css">
+        <link rel="stylesheet" href="/student_exam/css/navbar.css">
+        <link rel="stylesheet" href="/student_exam/css/result.css">
+
+        <!-- <script src="/script/pagination.js"></script> -->
+    </head>
+    <body>
+        
+        <%- include('component/Navbar'); %>
+        <h1>List Of User</h1>
+        <div class="center">
+            <%- include('./component/Sort_Pagination.ejs'); %>
+        </div>
+
+        <!-- <%var data=temp%> -->
+        <div class="flex">
+            <div>current_page:<%=CURRENT_PAGE %></div>
+            <div>totalpageno:<%=totalpageno %></div>
+        </div>
+
+        <% var current_page=CURRENT_PAGE %>
+        <% var totalpageno=totalpageno %>
+        <div class="center">
+
+            <table>
+
+                <%for(let key of temp){%>
+                <% const propertynames = Object.keys(key);%>
+                <tr>
+                    <%for(let i=1;i<propertynames.length;i++){%>
+                        <th><%=propertynames[i]%></th>
+                        <% } %>
+                    </tr>
+                    <% break; %>
+                    <% } %>
+
+                    <%for(let key of temp){%>
+                    <% const propertyvalues = Object.values(key); %>
+                    <tr>
+                        <%for(let i=1;i<propertyvalues.length;i++){%>
+                            <td><%=propertyvalues[i]%></td>
+                            <% } %>
+                        </tr>
+                        <% } %>
+                    </table>
+
+                </div>
+                <div class="center">
+
+                    <%- include('./component/Pagination.ejs'); %>
+
+                </div>
+
+            </body>
+            <script src="/student_exam/script/pagination.js"></script>
+        </html>

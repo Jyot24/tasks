@@ -1,0 +1,27 @@
+table,th,td{
+    border: 1px solid rgb(152, 152, 152);
+}
+
+
+.flex{
+    margin: 20px;
+justify-content: space-between;
+}
+
+h1 , .center{
+    display: flex;
+    justify-content: center;
+}
+
+th{
+    background-color: aqua;
+}
+td{
+    background-color: aquamarine;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

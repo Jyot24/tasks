@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=\, initial-scale=1.0">
+        <title>Exam Report</title>
+        <link rel="stylesheet" href="/student_exam/css/report_result.css">
+        <link rel="stylesheet" href="/student_exam/css/navbar.css">
+        
+    </head>
+    <body>
+        <%- include('component/Navbar'); %>
+        <!-- Button trigger modal -->
+        <h2>student report :- <%=student_id%></h2>
+        <% var percentage=0 %>
+        <div class="card">
+            <div class="container">
+                <table>
+                    <%for(let key of temp){%>
+                    <% const propertynames = Object.keys(key);%>
+                    <tr>
+                        <%for(let i=0;i<propertynames.length;i++){%>
+                            <th><%=propertynames[i]%></th>
+                            <% } %>
+                        </tr>
+                        <% break; %>
+                        <% } %>
+
+                        <%for(let key of temp){%>
+                        <% const propertyvalues = Object.values(key); %>
+                        <tr>
+                            <%for(let i=0;i<propertyvalues.length;i++){%>
+                                <td><%=propertyvalues[i]%></td>
+                                <% } %>
+                            </tr>
+                            <%percentage = percentage + propertyvalues[propertyvalues.length-2] %>
+                           
+                            <% } %>
+
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <span>TOTAL MARK:- <%=percentage%></span>
+                    <span>TOTAL PERCENTAGE:-  <%=percentage/6 %> %</span>
+                </div>
+                <div>
+                    <span><a href="/student_exam/userResult/">back to result page</a></span>
+                </div>
+            </body>
+        </html>

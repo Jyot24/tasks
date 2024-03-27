@@ -1,0 +1,42 @@
+<% var current_page=CURRENT_PAGE %>
+<% var totalpageno=totalpageno %>
+<div>
+    <div>
+        <% if(current_page==1 ) {%>
+        <a href="/student_exam/userResult/1" disabled="disabled"
+            style=" pointer-events: none;"> << </a>
+        <a href="/student_exam/userResult/<%= current_page -1  %>"
+            disabled="disabled" style=" pointer-events: none;">
+            < </a>
+        <%}else{ %>
+
+        <a href="/student_exam/userResult/1  %>">
+            << </a>
+        <a href="/student_exam/userResult/<%= current_page -1  %>">
+            < </a>
+        <%}%>
+
+        <% if((current_page>=1) && totalpageno>=current_page
+        ){%>
+        <span id="page"><%=current_page%></span>
+
+        <%} else{%>
+        <span id="page">1</span>
+        <% } %>
+        <% if(current_page== totalpageno) {%>
+        <a href=""
+            disabled="disabled" style=" pointer-events: none;">
+            > </a>
+        <a href="/student_exam/userResult/<%=totalpageno%>" disabled="disabled"
+            style=" pointer-events: none;"> >> </a>
+        <%}else{ %>
+
+        <a href="/student_exam/userResult/<%= current_page +1  %>"> > </a>
+        <a href="/student_exam/userResult/<%=totalpageno%>"> >> </a>
+        <%}%>
+
+        <!-- <a onclick="right()" id="rightAnchor"> > </a> -->
+        <!-- <a onclick="right()"> >> </a> -->
+
+    </div>
+</div>

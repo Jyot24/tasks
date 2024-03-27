@@ -1,0 +1,20 @@
+<div>
+    <!-- <a id="sortOrder"> -->
+    
+    <select name="order" onchange="handleChange(this)" id="order">
+        <% if(order=='"DESC"'){ %>
+            <option value="ASC">ASC</option>
+            <option value="DESC" selected>DESC</option>
+        <% } else if(order=='"ASC"'){ %>
+            <option value="ASC" selected>ASC</option>
+            <option value="DESC" >DESC</option>
+        <% } else{%>
+            <option value="ASC" >ASC</option>
+            <option value="DESC" >DESC</option>
+            <%  }%>
+
+         
+
+    </select>
+    <!-- </a> -->
+</div>

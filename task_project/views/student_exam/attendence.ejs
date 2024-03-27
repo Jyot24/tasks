@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=\, initial-scale=1.0">
+        <title>Attendence</title>
+        <link rel="stylesheet" href="/student_exam/css/listuser.css">
+        <link rel="stylesheet" href="/student_exam/css/navbar.css">
+        <link rel="stylesheet" href="/student_exam/css/result.css">
+
+    </head>
+    <body>
+        <%- include('component/Navbar'); %>
+        <h1>
+            Student Attendence
+        </h1>
+        <div class="center">
+            <%-include('component/filter_result.ejs') %>
+        </div>
+        <%
+        let ff
+        try {
+        ff=filter
+        } catch (error) {
+        ff=""
+        } %>
+
+        <% if(ff=="filter"){%>
+            <br>
+            <div class="center">
+                <%-include('component/read.ejs') %>
+            </div>
+        <% }else{ %>
+        <br>
+        <div class="center">
+
+            <%- include('./component/sort_attendence.ejs'); %>
+
+        </div>
+
+        <br>
+
+        <% var current_page=CURRENT_PAGE %>
+        <% var totalpageno=totalpageno %>
+
+        <div class="center">
+
+            <table>
+                <%- include('./component/data_read.ejs'); %>
+                <!-- <%for(let key of temp){%>
+            <% const propertynames = Object.keys(key);%>
+            <tr>
+                <%for(let i=0;i<propertynames.length;i++){%>
+                    <th onclick="hearderClick(<%=propertynames[i]%>)"><%=propertynames[i]%></th> a
+                    <% } %>
+                </tr>
+                <% break; %>
+                <% } %>
+
+                <%for(let key of temp){%>
+                <% const propertyvalues = Object.values(key); %>
+                <tr>
+                    <%for(let i=0;i<propertyvalues.length;i++){%>
+                        <td><%=propertyvalues[i]%></td>
+                        <% } %>
+                    </tr>
+                    <% } %> -->
+            </table>
+        </div>
+
+        <div class="center">
+            <%- include('./component/attendence_com.ejs'); %>
+        </div>
+        <% } %>
+    </body>
+    <script src="/student_exam/script/attend.js"></script>
+
+    <script>
+    function myFunction() {
+  var x = document.getElementById("showmore");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+} 
+    
+</script>
+</html>

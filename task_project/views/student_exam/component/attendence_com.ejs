@@ -1,0 +1,43 @@
+<% var current_page=CURRENT_PAGE %>
+<% var totalpageno=totalpageno %>
+<div>
+    <!-- <%=order%> -->
+    <div>
+        <% if(current_page==1 ) {%>
+        <a href="/student_exam/userAttendence/1?order=<%=order%>" disabled="disabled"
+            style=" pointer-events: none;"> << </a>
+        <a href="/student_exam/userAttendence/<%= current_page -1  %>?order=<%=order%>"
+            disabled="disabled" style=" pointer-events: none;">
+            < </a>
+        <%}else{ %>
+
+        <a href="/student_exam/userAttendence/1?order=<%=order%>  %>">
+            << </a>
+        <a href="/student_exam/userAttendence/<%= current_page -1  %>?order=<%=order%>">
+            < </a>
+        <%}%>
+
+        <% if((current_page>=1) && totalpageno>=current_page
+        ){%>
+        <span id="page"><%=current_page%></span>
+
+        <%} else{%>
+        <span id="page">1</span>
+        <% } %>
+        <% if(current_page== totalpageno) {%>
+        <a href=""
+            disabled="disabled" style=" pointer-events: none;">
+            > </a>
+        <a href="/student_exam/userAttendence/<%=totalpageno%>" disabled="disabled"
+            style=" pointer-events: none;"> >> </a>
+        <%}else{ %>
+
+        <a href="/student_exam/userAttendence/<%= current_page +1  %>?order=<%=order%>"> > </a>
+        <a href="/student_exam/userAttendence/<%=totalpageno%>?order=<%=order%>"> >> </a>
+        <%}%>
+
+        <!-- <a onclick="right()" id="rightAnchor"> > </a> -->
+        <!-- <a onclick="right()"> >> </a> -->
+
+    </div>
+</div>

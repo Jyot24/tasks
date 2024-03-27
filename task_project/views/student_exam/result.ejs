@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>result</title>
+        <link rel="stylesheet" href="/student_exam/css/listuser.css">
+        <link rel="stylesheet" href="/student_exam/css/result.css">
+        <link rel="stylesheet" href="/student_exam/css/navbar.css">
+    </head>
+    <body>
+        <%- include('component/Navbar'); %>
+        <h1>Student result</h1>
+
+       
+       
+
+        <% var current_page=CURRENT_PAGE %>
+        <% var totalpageno=totalpageno %>
+        <div class="center">
+            <table>
+                <tr>
+                    <th></th>
+                    <th colspan="2">prilimias</th>
+                    <th colspan="2">terminal</th>
+                    <th colspan="2">final</th>
+
+                </tr>
+
+                <%for(let key of temp){%>
+                <% const propertynames = Object.keys(key);%>
+                <tr>
+                    <%for(let i=1;i<propertynames.length;i++){%>
+
+                        <th><%=propertynames[i]%></th>
+
+                        <% } %>
+                    </tr>
+                    <% break; %>
+                    <% } %>
+
+                    <%for(let key of temp){%>
+                    <% const propertyvalues = Object.values(key); %>
+                    <tr>
+                        <%for(let i=1;i<propertyvalues.length;i++){%>
+                            <td><%=propertyvalues[i]%></td>
+
+                        </td>
+                        <% } %>
+                        <td><a
+                                href="/student_exam/userResultReport/<%=propertyvalues[0]%>"><?xml
+                                version="1.0"
+                                encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                <svg width="38px" height="18px"
+                                    viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <!-- <rect width="4" height="4" fill="white"/> -->
+                                    <circle cx="7" cy="12" r="0.5"
+                                        stroke="#000000" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <circle cx="12" cy="12" r="0.5"
+                                        stroke="#000000" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <circle cx="17" cy="12" r="0.5"
+                                        stroke="#000000" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></a>
+                        </tr>
+                        <% } %>
+                    </table>
+                </div>
+                <div class="center">
+                    <%- include('./component/result_page.ejs'); %>
+                </div>
+            </body>
+           
+        </html>
