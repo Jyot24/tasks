@@ -1,0 +1,34 @@
+<table class="center">
+  <%for(let key_main of temp){%>
+
+    <%for(let key of key_main){%>
+      <% const propertynames=Object.keys(key);%>
+        <tr>
+          <%for(let i=1;i<propertynames.length;i++){%>
+
+            <th>
+              <%=propertynames[i]%>
+            </th>
+
+
+            <% } %>
+        </tr>
+        <% break; %>
+          <% } %>
+
+
+
+            <%for(let key of key_main){%>
+              <% const propertyvalues=Object.values(key); %>
+                <tr>
+                  <%for(let i=1;i<propertyvalues.length;i++){%>
+                    <td>
+                      <%=propertyvalues[i]%>
+                    </td>
+
+                    </td>
+                    <% } %>
+                      <% } %>
+                        <% } %>
+
+</table>

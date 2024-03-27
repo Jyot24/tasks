@@ -25,6 +25,8 @@ app.use('/student_exam',require('./routes/tasks/student_exam/filter'))
 app.use('/job_application',require('./routes/tasks/job_application/auth'))
 app.use('/job_application',require('./routes/tasks/job_application/form'))
 
+app.use('/json_place_holder',require('./routes/tasks/json_place_holder/auth'))
+
 
 app.use('/dynamic_table',require('./routes/tasks/dynamic_table/dynamic_table'))
 app.use('/kuku_cube',require('./routes/tasks/kuku cube/kuku cube'))
@@ -61,5 +63,5 @@ app.use('/auth',require('./routes/navigate_after_login'))
 
 
 app.listen(port,()=>{
-    //console.log(`app listeing at http://localhost:${port}`);
+    console.log(`app listeing at http://localhost:${port}`);
 })

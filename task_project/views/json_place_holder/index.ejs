@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+    <style>
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid beige;
+        }
+
+        tr {
+            background-color: aqua;
+            color: rgb(0, 0, 0);
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        button,
+        span {
+            font-size: 50px;
+            margin: 10px;
+        }
+
+        /* button,
+        span {
+            width: 40%;
+            height: 100px;
+        } */
+    </style>
+
+</head>
+
+<body>
+    <h4>Jyot khant 24DEV057</h4>
+    <div class="center">
+        <h1>Posts</h1>
+        <button onclick="getPostPage('<<')" id="first">
+            << </button>
+                <button onclick="getPostPage('-')" id="decrement">
+                    < </button>
+                        <span id="current-page"></span>
+                        <button onclick="getPostPage('+')" id="increment">></button>
+                        <button onclick="getPostPage('>>')" id="last">>>
+                        </button>
+
+    </div>
+
+
+    <input type="text" oninput="onchange_serach(this.value)">
+
+    <table id="main-table" class="center">
+        <tbody id="tr-chlid">
+
+        </tbody>
+    </table>
+</body>
+
+<script>
+    let pageno = 1;
+    let object = {}
+    let current_page_object = {}
+
+    let app_url = '<%= process.env.APP_URL %>';
+
+
+    document.getElementById('current-page').innerHTML = pageno
+
+    function getPostPage(check) {
+        let max_length = object.length / 10
+
+        if (check == "<<") {
+            current_page_record(object, 1)
+            pageno = 1
+            document.getElementById('current-page').innerHTML = 1
+            document.getElementById('decrement').disabled = true
+            document.getElementById('first').disabled = true
+
+            document.getElementById('increment').disabled = false
+            document.getElementById('last').disabled = false
+
+            return
+        }
+
+        if (check == ">>") {
+            current_page_record(object, max_length)
+            pageno = max_length
+            document.getElementById('current-page').innerHTML = max_length
+            document.getElementById('increment').disabled = true
+            document.getElementById('last').disabled = true
+
+            document.getElementById('decrement').disabled = false
+            document.getElementById('first').disabled = false
+            return
+        }
+
+        document.getElementById('increment').disabled = false
+        if (check == "+") {
+            if (max_length == pageno + 1) {
+                current_page_record(object, max_length);
+                document.getElementById('current-page').innerHTML = max_length
+                pageno = max_length
+                document.getElementById('increment').disabled = true
+                document.getElementById('last').disabled = true
+
+                console.log(pageno);
+            } else {
+                document.getElementById('current-page').innerHTML = pageno + 1
+                pageno = pageno + 1
+                current_page_record(object, pageno);
+            }
+
+
+        } else {
+            if (pageno > 1) {
+                document.getElementById('current-page').innerHTML = pageno - 1
+                pageno = pageno - 1
+                current_page_record(object, pageno);
+
+            } else {
+                document.getElementById('current-page').innerHTML = 1
+                pageno = 1
+                current_page_record(object, 1);
+                document.getElementById('decrement').disabled = true
+                document.getElementById('first').disabled = true
+
+            }
+
+        }
+
+        if (pageno < max_length) {
+            document.getElementById('increment').disabled = false
+            document.getElementById('last').disabled = false
+
+        }
+
+        if (pageno > 1) {
+            document.getElementById('decrement').disabled = false
+            document.getElementById('first').disabled = false
+
+        }
+
+    }
+    // document.write(JSON.stringify(object) + object.length)
+
+
+
+
+    fetch(`${app_url}posts/`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(users => {
+            console.log("jondfrgu9iegu");
+            object = users
+            current_page_record(users, 1);
+            document.getElementById('decrement').disabled = true
+            document.getElementById('first').disabled = true
+
+            // current_page_record(users);
+        })
+        // .catch(error => {
+        //     console.error('There was a problem with the fetch operation:', error);
+        // });
+
+    async function current_page_record(users, pageno) {
+        let temp = ""
+
+        let count_current_page = Number(pageno - 1) * 10
+
+
+        const users_sliced = users.slice(count_current_page, count_current_page + 10)
+        current_page_object = users_sliced
+
+
+        const propertynames = Object.keys(users_sliced[0]);
+        temp = temp + "<tr><th>views</th>"
+
+        propertynames.map((name) => {
+            temp = temp + "<th>" + name + "</th>"
+        })
+        temp = temp + "</tr>"
+
+
+        users_sliced.map((values) => {
+            const propertyvalues = Object.values(values);
+            temp = temp + "<tr>" + `<td><a href="/json_place_holder/postDetails/${propertyvalues[0]}">views</a></td>`
+
+            propertyvalues.map((name_value) => {
+                temp = temp + "<td>" + name_value.toString().substring(0, 50) + "</td>"
+            })
+            temp = temp + "</tr>"
+
+        })
+
+
+        const node = document.getElementById("tr-chlid");
+        node.innerHTML = temp;
+        const clone = node.cloneNode(true);
+
+
+
+    }
+
+    async function onchange_serach(key) {
+        let arr = await search(key);
+        console.log("arr:" + arr);
+        let temp = ""
+
+        if (arr == "") {
+            const node = document.getElementById("tr-chlid");
+            node.innerHTML = "not found";
+            const clone = node.cloneNode(true);
+            return
+        }
+
+        const propertynames = Object.keys(arr[0]);
+        temp = temp + "<tr><th>views</th>"
+
+        propertynames.map((name) => {
+            temp = temp + "<th>" + name + "</th>"
+        })
+        temp = temp + "</tr>"
+
+
+        arr.map((values) => {
+            const propertynames = Object.keys(values);
+
+            temp = temp + "<tr>" + `<td><a href="/postDetails/${propertynames[0]}">views</a></td>`
+            propertynames.map((keys) => {
+                console.log(values[keys] + "keys");
+
+                if (keys == "image" || keys == "thumbnail") {
+                    temp += `<td><img src="${values[keys]}" alt="" srcset="" width="30px" height="10px"></td>`
+
+                } else {
+                    temp = temp + "<td>" + values[keys].toString().substring(0, 50) + "</td>"
+                }
+            })
+            temp = temp + "</tr>"
+
+        })
+
+
+        const node = document.getElementById("tr-chlid");
+        node.innerHTML = temp;
+        const clone = node.cloneNode(true);
+
+    }
+
+    // let arr= await search(current_page_object)
+    // console.log("arr:"+arr);
+
+    function search(searchKey) {
+        console.log("searchKey:" + searchKey);
+        // console.log("current_page_object:"+current_page_object);
+
+        // let ss= current_page_object.filter(obj => Object.keys(obj).some(key => {
+        //     // console.log("keys:"+obj[key])
+
+        //     obj[key].toString().includes("morbi")
+        // }
+        // // obj[key].includes("morbi"))
+
+
+        // ));
+
+        return current_page_object.filter(obj => Object.keys(obj).some(key => obj[key].toString().includes(searchKey)));
+    }
+
+</script>
+
+</html>
