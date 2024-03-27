@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>task</title>
+        <style>
+            table > tr, td {
+            border: 1px solid rgb(255, 255, 255);
+            /* border-radius: 70px; */
+        }
+        table{
+            border-spacing: 30px;
+        }
+
+        td {
+            height: 150px;
+            width: 150px;
+            text-align: center;
+            color: #ffffff;
+            font-size: 24px;
+            background-color: #FFA500;
+            
+        }
+        td:empty::before {content: "eSparkBiz"}
+        
+        tr:nth-of-type(even) td:nth-of-type(odd), 
+        tr:nth-of-type(odd) td:nth-of-type(even) {background-color: rgb(95, 159, 35);}
+
+        .title {
+            padding: 15px;
+            margin: 15px;
+            background-color:rgb(12, 157, 157) ;
+            color: #ffffff;
+        }
+
+        button{
+            border: 3px solid white;
+            height: 35px;
+            width: 35px;
+            text-align: center;
+            font-size: 22px;
+            border-radius: 20px;
+        }
+
+        div{
+            border-radius: 40px;
+        }
+        </style>
+        <script>
+            
+            const addRow=()=>{
+                var table = document.getElementById('tableId');
+                var cell=table.insertRow(1)
+                var colCount = table.rows[0].cells.length;
+                console.log(colCount)
+                for(let i=0;i<colCount;i++){
+                    cell.insertCell(i);
+                }
+                
+            }
+            const removeRow=()=>{
+                // alert('dff')
+                var table = document.getElementById('tableId');
+                var rowLength=table.rows.length
+               
+                if(rowLength>2){
+                    table.deleteRow(1)
+                }
+                else{
+                    alert('Row length can not be less than 2')
+                }
+            }
+
+            const addCol=()=>{
+                var table = document.getElementById('tableId');
+                var row = table.rows;   
+                var i = 0;  
+                for (var j = 0; j < row.length; j++) { 
+                 row[j].insertCell(i); 
+                } 
+            }
+
+            const removeCol=()=>{
+               
+                var table = document.getElementById('tableId');
+                var colCount = table.rows[0].cells.length;
+                var row = table.rows;   
+                var i = 0;  
+                if(colCount>2){
+                    for (var j = 0; j < row.length; j++) { 
+        
+                        // Deleting the ith cell of each row. 
+                        row[j].deleteCell(i); 
+                    } 
+                }
+                else{
+                    alert('Column length can not be less than 2')
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1
+            style="display:flex ; align-items: center; justify-content: center; color: rgb(0, 123, 123);">Jyot
+            Khant (24DEV057) 01-02-2024</h1>
+        <div style="float: right; width: 350px; font-size: 24px;" class="title">
+            Rows Add and Delete
+            <button onclick="addRow()"
+                style="color:rgb(255, 255, 255) ; background-color:#FFA500 ;">+</button>
+            <button
+                onclick="removeRow()"
+                style="background-color:rgb(123, 255, 0) ; color:rgb(232, 96, 96) ;">-</button>
+        </div>
+        <table style="width:100%;" id="tableId">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <div
+            style="float: left; width: 380px; font-size: 24px; position: fixed; TOP: 85%;"
+            class="title">
+            Column Add and Delete
+            <button onclick="addCol()"
+                style="color:rgb(255, 255, 255) ; background-color:#FFA500 ;">+</button>
+            <button
+                onclick="removeCol()"
+                style="background-color:rgb(127, 255, 6) ; color:rgb(234, 69, 69) ;">-</button>
+        </div>
+    </body>
+</html>

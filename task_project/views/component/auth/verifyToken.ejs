@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            display: flex;
+            justify-content: center;
+            margin-top: 15%;
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <span id="set"></span>
+</body>
+<script>
+        let email = '<%=email%>'
+        fetch(`http://localhost:8020/expire/activation_code`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email }),
+        })
+        .then((response) => {
+            return response.json()
+        }).then((data) => {
+            ////console.log(JSON.stringify(data));
+
+            document.getElementById('set').innerHTML = `<a href="/expire/verifyUser/?email=${email}&activation_code=${data.activation_code}&forgot=true">click to verify</a>`
+        })
+</script>
+
+</html>

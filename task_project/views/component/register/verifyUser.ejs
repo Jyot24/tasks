@@ -1,0 +1,123 @@
+
+<% 
+let is_expire=false
+let activation_code_temp=""
+try {
+  activation_code_temp=activation_code
+ 
+  ////console.log("is_expire:"+is_expire);
+} catch (error) {
+  is_expire=false
+}
+try {
+  is_expire = expire_code
+} catch (error) {
+  
+}
+%>
+
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Email-Verification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+      span{
+        /* display: none; */
+      }
+    </style>
+  </head>
+
+  <body>
+    <span id="setToken"><a href="/register/verifyUser/?email=<%=email%>&activation_code=<%=activation_code_temp%>">click to verify</a></span>
+    <!-- <a href="/register/verifyUser/?email=<%=email%>&activation_code=<%=activation_code_temp%>">click to verify</a> -->
+    <!-- <div onclick="click_to_verify()">click to verify</div> -->
+    <span class="d-flex justify-content-center align-items-center continer" id="error" style="color: red;" ></span>
+    <!-- <form action="/register/verifyUser" method="post" autocomplete="off">
+      <div class="d-flex justify-content-center align-items-center continer">
+       
+        <div class="card py-5 px-3">
+          <h5 class="m-0">Email verification</h5>
+          <span class="mobile-text"><b>Enter the code we just sent on your email</b>
+          </span>
+          <div class="d-flex flex-row mt-5">
+
+            <input type="hidden" name="email" placeholder="email" value="<%=email %>">
+            <input type="text" name="activation_code" class="form-control" placeholder="enter a verify code"
+              autofocus="">
+          </div>
+          <div class="text-center mt-5">
+            <span class="d-block mobile-text" id="countdown"></span>
+            <span class="d-block mobile-text" id="resend"></span>
+          </div>
+          <input type="submit" value="verify">
+        </div>
+      </div>
+    </form> -->
+    
+  </body>
+
+  <script>
+
+   
+    
+    try {
+      let expire_code = '<%=is_expire%>'
+      let err = '<%=err%>'
+      let email = '<%=email%>'
+      //console.log("expire_code:"+expire_code +"err:"+err);
+if (expire_code === 'true') {
+  //console.log("nviuwdrhg")
+  fetch(`http://localhost:8020/expire/activation_code`, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ email }),
+        })
+        .then((response)=>{
+          return response.json()
+        })
+        .then((data)=>{
+          //console.log(JSON.stringify(data));
+          //console.log(JSON.stringify(data));
+          document.getElementById('setToken').innerHTML=` <a href="/register/verifyUser/?email=${email}&activation_code=${data.activation_code}">click to verify</a>`
+        })
+        
+        document.getElementById('error').innerHTML=err
+}
+if(err!=""){
+  fetch(`http://localhost:8020/expire/activation_code`, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ email }),
+        })
+        .then((response)=>{
+          return response.json()
+        })
+        .then((data)=>{
+          //console.log(JSON.stringify(data));
+          //console.log(JSON.stringify(data));
+          document.getElementById('setToken').innerHTML=` <a href="/register/verifyUser/?email=${email}&activation_code=${data.activation_code}">click to verify</a>`
+        })
+
+
+  // document.getElementById('setToken').innerHTML=` <a href="/register/verifyUser/?email=${email}&activation_code=${activation_code_temp}">`
+  //   document.getElementById('error').innerHTML="buughgh7"
+}
+
+    } catch (error) {
+    }
+
+
+
+  </script>
+
+  </html>
