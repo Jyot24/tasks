@@ -470,9 +470,9 @@ for (const key in combo_language) {
 
 var combo_tech_temp = '<%- JSON.stringify(technologies_db) %>';
 let combo_tech = JSON.parse(combo_tech_temp)
-// //console.log(JSON.parse(combo_tech_temp));
+// ////console.log(JSON.parse(combo_tech_temp));
 for (let i in combo_tech) {
-    // //console.log("combo_tech:" + combo_tech[i].name);
+    // ////console.log("combo_tech:" + combo_tech[i].name);
     document.getElementById(`${combo_tech[i].name}`).checked = true;
     let subfields = document.querySelectorAll(`.${combo_tech[i].name}`);
 
@@ -510,16 +510,16 @@ if (check_is_empty_couser_object == "") {
 
         element.appendChild(newOption);
     })
-    console.log("hi");
+    //console.log("hi");
 } else {
     [...document.querySelectorAll('.course')].map((element, index) => {
         // element.selected = ""
         const newOption = document.createElement('option');
         let couse_temp = '<%-JSON.stringify(course_details)%>'
         let couser_object = JSON.parse(couse_temp)
-        //console.log(typeof index);
+        ////console.log(typeof index);
         let current_couser_object = couser_object[`${index}`].name
-        //console.log("elementbhu:" + `${current_couser_object}`);
+        ////console.log("elementbhu:" + `${current_couser_object}`);
 
         const optionText = document.createTextNode(`${current_couser_object}`);
 
@@ -555,7 +555,7 @@ object_seleted["department"] = '<%=preferances.department%>'
 radiobtn = document.getElementById("<%=basic_details.gender%>");
 radiobtn.checked = true;
 
-//console.log("radiobtn:" + radiobtn);
+////console.log("radiobtn:" + radiobtn);
 
 
 for (let id in object_seleted) {
@@ -576,7 +576,7 @@ let deletework= [];
 
 function getDeleteWork(id){
     deletework.push(id)
-    console.log("getDeleteWork:"+JSON.stringify(deletework));
+    //console.log("getDeleteWork:"+JSON.stringify(deletework));
     document.getElementById('workDeleteId').value=deletework
 }
 
@@ -615,7 +615,7 @@ function getDeleteWork(id){
 //     const clone = node.cloneNode(true);
 //     document.getElementById("workExperience").appendChild(clone);
 
-//     //console.log("hi");
+//     ////console.log("hi");
 // }
 
 // function myFunctionReferance() {

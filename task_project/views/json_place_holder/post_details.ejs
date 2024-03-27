@@ -47,6 +47,8 @@
 </head>
 
 <body onload="myFunction(<%=id%>)">
+
+    <a href="/user/profile/" tabindex="5">Home</a>
     <div class="card">
         <div class="container">
             <h4>Post Details</h4>
@@ -88,7 +90,7 @@
                 return users
             })
             .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
+                //console.error('There was a problem with the fetch operation:', error);
             });
         // })
 
@@ -114,7 +116,7 @@
 
 
         temp_html += "</tr></table>"
-        // console.log("temp_html:" + temp_html);
+        // //console.log("temp_html:" + temp_html);
         document.getElementById('setContent').innerHTML = temp_html
     }
 
@@ -125,7 +127,7 @@
             return value.postId == id
         })
 
-        console.log("final_object_comment:" + final_object_comment);
+        //console.log("final_object_comment:" + final_object_comment);
         if (final_object_comment == "") {
             if (document.getElementById('showComments').style.display == "") {
                 document.getElementById('showComments').style.display = "none"

@@ -6,7 +6,7 @@ var name
 
 router.get('/listuser/:id', (req, res) => {
 
-    console.log("name:" + req.query.order);
+    //console.log("name:" + req.query.order);
     let count_record
 
 
@@ -44,8 +44,8 @@ router.get('/listuser/:id', (req, res) => {
                 let success = false
                 return res.status(400).json({ success, error: err })
             }
-            console.log("ORDER:"+order);
-            // console.log("result:" + JSON.stringify(result) + ":");
+            //console.log("ORDER:"+order);
+            // //console.log("result:" + JSON.stringify(result) + ":");
 
             res.render('student_exam/ListUser', { temp: result, CURRENT_PAGE: totalpageno >= Number(req.params.id) ? Number(req.params.id) : 1, totalpageno: totalpageno, order: req.query.order });
 
@@ -76,7 +76,7 @@ router.get('/userAttendence/:id', (req, res) => {
             count_record = 0
 
         }
-        // console.log("hi");
+        // //console.log("hi");
         // }
         // query ="select MONTH(date), count(case when attendance_status = 'P' then 1 end )*100/ count(*) AS PERCENT from student_attendence group by MONTH(date)"
         // var query = `SELECT * FROM user where id='${req.params.id}';`
@@ -202,7 +202,7 @@ router.get('/userResult/:id', (req, res) => {
                 let success = false
                 return res.status(400).json({ success, error: err })
             }
-            // console.log("result:" + JSON.stringify(result) + ":");
+            // //console.log("result:" + JSON.stringify(result) + ":");
 
             res.render('student_exam/result', { temp: result, CURRENT_PAGE: totalpageno >= Number(req.params.id) ? Number(req.params.id) : 1, totalpageno: totalpageno, order: order });
 
@@ -241,8 +241,8 @@ router.get('/userResultReport/:student_id', (req, res) => {
             let success = false
             return res.status(400).json({ success, error: err })
         }
-        // console.log(totalpageno);
-        // console.log("result:" + JSON.stringify(result) + ":");
+        // //console.log(totalpageno);
+        // //console.log("result:" + JSON.stringify(result) + ":");
 
         // res.render('component/result_report', { temp: result });
         res.render('student_exam/report_result', { temp: result, student_id: req.params.student_id })

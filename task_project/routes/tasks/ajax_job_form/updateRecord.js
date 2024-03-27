@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.post('/basic_details', async (req, res) => {
 
-    // //console.log("update basic:"+JSON.stringify(req.body));
+    // ////console.log("update basic:"+JSON.stringify(req.body));
 
     const first_name = req.body.first_name;
     const last_name = req.body.last_name
@@ -97,7 +97,7 @@ router.post('/course_details', async (req, res) => {
                         try {
 
                             connectMySql.query(course_details, (err, result) => {
-                                ////console.log("successful course_details");
+                                //////console.log("successful course_details");
                             })
                         } catch (error) {
                             res.status(500).json({ err: "update course_details" })
@@ -276,11 +276,11 @@ router.post('/work_experience', async (req, res) => {
     const From = req.body.From || ""
     const to = req.body.to || ""
 
-    //console.log("update work_experience:" + JSON.stringify(req.body));
+    ////console.log("update work_experience:" + JSON.stringify(req.body));
     if (typeof company == "string") {
         let work_experience = `UPDATE work_e SET company_name ='${company}' , designation ='${workDesignation}' ,w_from ='${From}' , w_to ='${to}'  WHERE job_id =${req.body.job_id} and w_no='1';`
 
-        //console.log("work_experience QUERY:" + work_experience);
+        ////console.log("work_experience QUERY:" + work_experience);
         try {
 
 
@@ -311,7 +311,7 @@ router.post('/work_experience', async (req, res) => {
             }
         }
 
-        ////console.log("query work_experience:" + work_experience);
+        //////console.log("query work_experience:" + work_experience);
 
         try {
 
@@ -413,7 +413,7 @@ router.post('/referance_contact', async (req, res) => {
             }
         }
 
-        // ////console.log("query referance_contact:" + referance_contact);
+        // //////console.log("query referance_contact:" + referance_contact);
         try {
 
 

@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
         }
 
         const str = req.body.filter
-        ////console.log("str:" + str);
+        //////console.log("str:" + str);
         // var check=str.split('$')
         var delimiter = /[_,^,{,},$,:]/;
         // var check=str.split(/$|_|}|{|:/) 
@@ -38,25 +38,25 @@ router.post('/', (req, res) => {
         let stringKeys = str
 
         var confirm = str.split(delimiter).map(s => array.push(s))
-        ////console.log("array:" + array);
+        //////console.log("array:" + array);
 
         var raa = array.map((a) => {
-            // ////console.log("a:"+a);
-            // ////console.log("a.replaceAll:"+str.replaceAll(a,""));
+            // //////console.log("a:"+a);
+            // //////console.log("a.replaceAll:"+str.replaceAll(a,""));
             // key.push(str.replaceAll(a,""))
             stringKeys = stringKeys.replace(a, "")
             // return str.replaceAll(a,"")
 
         })
-        // ////console.log("key:"+key+"raa:"+raa);
-        ////console.log("raa:" + raa);
-        ////console.log("ssssss:" + stringKeys.length + "array:" + array.length);
+        // //////console.log("key:"+key+"raa:"+raa);
+        //////console.log("raa:" + raa);
+        //////console.log("ssssss:" + stringKeys.length + "array:" + array.length);
 
         var ss = str.split('_').join('__').split(':').join('::').split('{').join('{{').split('}').join('}}').split('$').join('$$');
-        // ////console.log("check:"+check);
-        // ////console.log('\n');
-        // ////console.log(str.split(delimiter).map(s => s.split(delimiter)));
-        // ////console.log(ss.split(delimiter).map(s =>////console.log("s:"+s)));
+        // //////console.log("check:"+check);
+        // //////console.log('\n');
+        // //////console.log(str.split(delimiter).map(s => s.split(delimiter)));
+        // //////console.log(ss.split(delimiter).map(s =>//////console.log("s:"+s)));
 
 
         for (let i = 0; i < stringKeys.length; i++) {
@@ -75,23 +75,23 @@ router.post('/', (req, res) => {
                     object[stringKeys[i]] = [array[i + 1]]
                 }
             }
-            ////console.log(stringKeys[i]);
+            //////console.log(stringKeys[i]);
         }
 
 
-        ////console.log("object:" + JSON.stringify(object));
+        //////console.log("object:" + JSON.stringify(object));
 
         var string = "country: Kenya, city: Nairobi, population: 3.375M, democracy-desciption: Work in progress/ Not fully met, obstacles exist, foo: bar, bar, bar";
 
-        // ////console.log("demo:"+string.split(/, (?=[^,]+:)/).map(s => ////console.log("s:"+s)));
+        // //////console.log("demo:"+string.split(/, (?=[^,]+:)/).map(s => //////console.log("s:"+s)));
 
         // const result = str.split(delimiter).reduce((acc, x) => {
-        //     ////console.log("acc:"+acc+" x:"+x.trim());
+        //     //////console.log("acc:"+acc+" x:"+x.trim());
         // })
 
-        // ////console.log("result:"+result);
+        // //////console.log("result:"+result);
 
-        ////console.log("gjknghi:" + object["_"].length);
+        //////console.log("gjknghi:" + object["_"].length);
 
 
         // query=`SELECT * FROM student_27_2.student_master where first_name like '%${object["_"]}%' AND last_name like '%${object["^"]}%';`
@@ -102,7 +102,7 @@ router.post('/', (req, res) => {
         let query = "SELECT * FROM student_master where "
 
         // const retivekeys = object.slice(1, object.length-1); 
-        // ////console.log("retivekeys:"+retivekeys);
+        // //////console.log("retivekeys:"+retivekeys);
         let check_is_one = 1
         let two_consective_length_2 = 1
         let previous_temp_key = ""
@@ -113,11 +113,11 @@ router.post('/', (req, res) => {
             if (sqlName.hasOwnProperty(key)) {
 
 
-                ////console.log("sqlName:" + sqlName[key]);
+                //////console.log("sqlName:" + sqlName[key]);
                 if (object[key].length > 1) {
                     check_is_one = 2
 
-                    ////console.log("object[previous_temp_key]:" + object[previous_temp_key]);
+                    //////console.log("object[previous_temp_key]:" + object[previous_temp_key]);
 
                     // if (previous_temp_key == "") {
                     //     query = query + "( "
@@ -150,7 +150,7 @@ router.post('/', (req, res) => {
 
 
                         if (i == object[key].length - 1) {
-                            ////console.log("key:" + key);
+                            //////console.log("key:" + key);
                             previous_temp_key = key
                             // if(two_consective_length_2==2){
                             //     query = query + "AND ( " + sqlName[key] + " like " + `'%${object[key][i]}%'` + ")" + ") "
@@ -182,7 +182,7 @@ router.post('/', (req, res) => {
                 }
             }
 
-            ////console.log("key:" + query);
+            //////console.log("key:" + query);
         }
 
         // if(object["_"].length>1){
@@ -201,7 +201,7 @@ router.post('/', (req, res) => {
 
 
         // }
-        ////console.log("query:" + query);
+        //////console.log("query:" + query);
 
         con.query(query, function (err, result) {
             if (err) {

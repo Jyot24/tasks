@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     // fetch('https://quotes.toscrape.com/random')
     // .then((response) => response.text())
     // .then((body) => {
-    //     console.log(body);
+    //     //console.log(body);
     // }); 
     // res.render('Home');
     // res.render('pages/' + 'Home', { name: 'jyot' });

@@ -12,7 +12,7 @@ router.post('/activation_code',(req,res)=>{
 
     let query_users=`UPDATE users SET activation_code ='${activation_code}' WHERE email = '${req.body.email}';`
 
-   //////console.log("activation_code");
+   ////////console.log("activation_code");
 
 
 
@@ -50,7 +50,7 @@ router.post('/activation_code',(req,res)=>{
             //         res.status(200).json('Email sent: ' + info.response);
             //     }
             // });
-            // ////////console.log("query_users exprie:"+err)
+            // //////////console.log("query_users exprie:"+err)
             // res.render('component/register/verifyUser',{email:req.body.email})
 
             return res.status(400).json({ success:true,err: "" ,activation_code:activation_code});
@@ -61,10 +61,10 @@ router.post('/activation_code',(req,res)=>{
 router.all('/verifyUser',(req,res)=>{
     let query_verify_user=`SELECT * FROM users where email='${req.query.email}' and activation_code='${req.query.activation_code}';`
     let email=req.query.email
-    //////console.log("email:"+email+"query"  + query_verify_user);
+    ////////console.log("email:"+email+"query"  + query_verify_user);
     // let query_verify_user=`SELECT * FROM users where email='${req.body.email}' and activation_code='${req.body.activation_code}' and status = '0';`
     connectMySql.query(query_verify_user, (err, result) => {
-        //////console.log("hittt"+JSON.stringify(result)+err);
+        ////////console.log("hittt"+JSON.stringify(result)+err);
         if(err){
             res.render('component/auth/verifyToken',{email:email ,err:"invalid credentials"})
             // var success=false;

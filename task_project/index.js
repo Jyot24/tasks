@@ -2,6 +2,8 @@ const express=require('express');
 const app= express();
 const path = require('path');
 const bodyParser = require('body-parser');
+const {verifyAuth_is_login}=require('./middleware/is_login')
+
 
 const port=8020;
 
@@ -17,37 +19,64 @@ app.use(express.static(path.join(__dirname , 'public')))
 
 // app.use(cors())//because this need if we use call api in react app then 'cors' is needed
 
-//all tasks 
-app.use('/student_exam',require('./routes/tasks/student_exam/auth'))
-app.use('/student_exam',require('./routes/tasks/student_exam/page'))
-app.use('/student_exam',require('./routes/tasks/student_exam/filter'))
+//-------------------------------------------------all tasks route --------------------------------------------------------------
 
-app.use('/job_application',require('./routes/tasks/job_application/auth'))
-app.use('/job_application',require('./routes/tasks/job_application/form'))
+//*************************************************  student_exam  *********************************************************
+app.use('/student_exam', verifyAuth_is_login,require('./routes/tasks/student_exam/auth'))
+app.use('/student_exam',verifyAuth_is_login,require('./routes/tasks/student_exam/page'))
+app.use('/student_exam',verifyAuth_is_login,require('./routes/tasks/student_exam/filter'))
 
-app.use('/json_place_holder',require('./routes/tasks/json_place_holder/auth'))
+//*************************************************  job_application  *********************************************************
 
+app.use('/job_application',verifyAuth_is_login,require('./routes/tasks/job_application/auth'))
+app.use('/job_application',verifyAuth_is_login,require('./routes/tasks/job_application/form'))
 
-app.use('/dynamic_table',require('./routes/tasks/dynamic_table/dynamic_table'))
-app.use('/kuku_cube',require('./routes/tasks/kuku cube/kuku cube'))
-app.use('/tic_tak_toc',require('./routes/tasks/tic tak toc/tic_tak_toc'))
-app.use('/delimiter_search',require('./routes/tasks/delimiter_search/auth'))
-app.use('/ajax_job_form',require('./routes/tasks/ajax_job_form/form'))
-app.use('/ajax_job_form/save',require('./routes/tasks/ajax_job_form/save'))
-app.use('/ajax_job_form/read',require('./routes/tasks/ajax_job_form/getRecord'))
-app.use('/ajax_job_form/update',require('./routes/tasks/ajax_job_form/updateRecord'))
+//*************************************************  json_place_holder  *********************************************************
 
-app.use('/html',require('./routes/tasks/html/html'))
+app.use('/json_place_holder',verifyAuth_is_login,require('./routes/tasks/json_place_holder/auth'))
 
-app.use('/timezone',require('./routes/tasks/timezone/index'))
+//*************************************************  dynamic_table  *********************************************************
 
-app.use('/viewGrid',require('./routes/tasks/viewGrid/auth'))
-app.use('/viewGrid',require('./routes/tasks/viewGrid/page'))
+app.use('/dynamic_table',verifyAuth_is_login, verifyAuth_is_login,require('./routes/tasks/dynamic_table/dynamic_table'))
 
-app.use('/event_table',require('./routes/tasks/event_table/event_table'))
+//*************************************************  kuku_cube  *********************************************************
 
-// event_table
-//-----------------------------------------------------------------------------------------------
+app.use('/kuku_cube',verifyAuth_is_login,require('./routes/tasks/kuku cube/kuku cube'))
+
+//*************************************************  tic_tak_toc  *********************************************************
+
+app.use('/tic_tak_toc',verifyAuth_is_login,require('./routes/tasks/tic tak toc/tic_tak_toc'))
+
+//*************************************************  delimiter_search  *********************************************************
+
+app.use('/delimiter_search',verifyAuth_is_login,require('./routes/tasks/delimiter_search/auth'))
+
+//*************************************************  ajax_job_form  *********************************************************
+
+app.use('/ajax_job_form',verifyAuth_is_login,require('./routes/tasks/ajax_job_form/form'))
+app.use('/ajax_job_form/save',verifyAuth_is_login,require('./routes/tasks/ajax_job_form/save'))
+app.use('/ajax_job_form/read',verifyAuth_is_login,require('./routes/tasks/ajax_job_form/getRecord'))
+app.use('/ajax_job_form/update',verifyAuth_is_login,require('./routes/tasks/ajax_job_form/updateRecord'))
+
+//*************************************************  html task  *********************************************************
+
+app.use('/html', verifyAuth_is_login,require('./routes/tasks/html/html'))
+
+//*************************************************  timezone  *********************************************************
+
+app.use('/timezone',verifyAuth_is_login,require('./routes/tasks/timezone/index'))
+
+//*************************************************  viewGrid  *********************************************************
+
+app.use('/viewGrid',verifyAuth_is_login,require('./routes/tasks/viewGrid/auth'))
+app.use('/viewGrid',verifyAuth_is_login,require('./routes/tasks/viewGrid/page'))
+
+//*************************************************  event_table  *********************************************************
+
+app.use('/event_table',verifyAuth_is_login,require('./routes/tasks/event_table/event_table'))
+
+//-------------------------------------------------  register and login  --------------------------------------------------------------
+
 app.use('/register' ,require('./routes/register/register'))
 app.use('/login' ,require('./routes/login/login'))
 
@@ -57,16 +86,8 @@ app.use('/forgot',require('./routes/forgot/update_password'))
 app.use('/user' ,require('./routes/users/user'))
 
 
-
 app.use('/' ,require('./routes/navigate'))
 app.use('/auth',require('./routes/navigate_after_login'))
-
-
-
-
-//ejs engine set
-
-//Routes
 
 
 

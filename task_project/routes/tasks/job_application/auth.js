@@ -55,7 +55,7 @@ router.post('/auth',
     ], async (req, res) => {
 
         const errors = validationResult(req);
-        //console.log(errors);
+        ////console.log(errors);
         if (!errors.isEmpty()) {
             var success = false;
             return res.status(400).json({ success, errors: errors.array() });
@@ -76,7 +76,7 @@ router.post('/auth',
         const city = req.body.city
         const state = req.body.state
         const zipcode = req.body.zipcode
-        // //console.log("RelationShip:"+RelationShip)
+        // ////console.log("RelationShip:"+RelationShip)
         // const SSCBoard = req.body.SSCBoard
         // const SSCPassiong = req.body.SSCPassiong
         // const SSCPercentage = req.body.SSCPercentage
@@ -134,7 +134,7 @@ router.post('/auth',
 
         // connectMySql.connect((err) => {
         //     
-        //     //console.log("Connected!");
+        //     ////console.log("Connected!");
 
         // const technologies_temp = `INSERT INTO technologies (job_id,name,level) VALUES ('${localStorage.getItem('job_id')}','${php}','${phplevel}')`+` ${mysql}!="" ?,('${localStorage.getItem('job_id')}','${mysql}','${mysqllevel}'): "" ` `,('${localStorage.getItem('job_id')}','${laravel}','${laravelLevel}'),('${localStorage.getItem('job_id')}','${oracle}','${oraclelevel}')`
 
@@ -149,7 +149,7 @@ router.post('/auth',
 
                 localStorage.setItem('job_id', result.insertId)
                 // job_id= result.insertId;
-                //console.log("Number of records inserted: " + localStorage.getItem('job_id'));
+                ////console.log("Number of records inserted: " + localStorage.getItem('job_id'));
                 call(result.insertId)
 
                 // })
@@ -159,7 +159,7 @@ router.post('/auth',
 
                     // connectMySql.query(sql_employee_education_detail, (err, result) => {
                     //     
-                    //     //console.log("successful sql_employee_education_detail");
+                    //     ////console.log("successful sql_employee_education_detail");
                     // })
 
                     if (hindi != "") {
@@ -168,7 +168,7 @@ router.post('/auth',
                         try {
                             connectMySql.query(language_hindi, (err, result) => {
 
-                                //console.log("successful language_hindi");
+                                ////console.log("successful language_hindi");
                             })
                         } catch (error) {
                             res.status(400).json({ error_insert: "insert language_hindi" })
@@ -184,7 +184,7 @@ router.post('/auth',
                         try {
                             connectMySql.query(language_gujrati, (err, result) => {
 
-                                //console.log("successful language_gujrati");
+                                ////console.log("successful language_gujrati");
                             })
                         } catch (error) {
                             res.status(400).json({ error_insert: "insert language_gujrati" })
@@ -200,7 +200,7 @@ router.post('/auth',
                         try {
                             connectMySql.query(language_english, (err, result) => {
 
-                                //console.log("successful language_english");
+                                ////console.log("successful language_english");
                             })
                         } catch (error) {
                             res.status(400).json({ error_insert: "insert language_english" })
@@ -220,7 +220,7 @@ router.post('/auth',
                         try {
                             connectMySql.query(technologies_php, (err, result) => {
 
-                                //console.log("successful technologies");
+                                ////console.log("successful technologies");
 
                             })
                         } catch (error) {
@@ -296,7 +296,7 @@ router.post('/auth',
 
                         connectMySql.query(preferances, (err, result) => {
 
-                            //console.log("successful preferances");
+                            ////console.log("successful preferances");
 
                         })
                     } catch (error) {
@@ -314,7 +314,7 @@ router.post('/auth',
 
                                 connectMySql.query(course_details, (err, result) => {
 
-                                    //console.log("successful course_details");
+                                    ////console.log("successful course_details");
 
                                 })
                             } catch (error) {
@@ -355,7 +355,7 @@ router.post('/auth',
 
                                 connectMySql.query(work_experience, (err, result) => {
 
-                                    //console.log("successful work_experience");
+                                    ////console.log("successful work_experience");
 
                                 })
                             } catch (error) {
@@ -377,12 +377,12 @@ router.post('/auth',
                                 }
                             }
 
-                            //console.log("query work_experience:" + work_experience);
+                            ////console.log("query work_experience:" + work_experience);
 
                             try {
                                 connectMySql.query(work_experience, (err, result) => {
 
-                                    //console.log("successful work_experience");
+                                    ////console.log("successful work_experience");
 
                                 })
                             } catch (error) {
@@ -410,7 +410,7 @@ router.post('/auth',
                         } else {
 
                             let referance_contact = ``
-                            //console.log("referance_contact: type:" + typeof ReferanceName + typeof ReferanceName[0]);
+                            ////console.log("referance_contact: type:" + typeof ReferanceName + typeof ReferanceName[0]);
 
                             for (let i = 0; i < Relation.length; i++) {
                                 if (i == Relation.length - 1) {
@@ -422,7 +422,7 @@ router.post('/auth',
                                 }
                             }
 
-                            // //console.log("query referance_contact:" + referance_contact);
+                            // ////console.log("query referance_contact:" + referance_contact);
 
                             try {
                                 connectMySql.query(referance_contact, (err, result) => {
@@ -437,12 +437,12 @@ router.post('/auth',
 
 
                 }
-                //console.log("workDesignation:" + workDesignation[0]);
+                ////console.log("workDesignation:" + workDesignation[0]);
                 res.redirect(`/job_application/getRecord/${localStorage.getItem('job_id')}`)
                 // getRecord
                 // res.end("complete")
                 if (((company != "") && (workDesignation != "") && (From != "") && (to != ""))) {
-                    //console.log("vnuhueft")
+                    ////console.log("vnuhueft")
                 }
                 // connectMySql.end();
 
@@ -495,7 +495,7 @@ router.get('/getRecord/:id', async (req, res) => {
 
     connectMySql.query(query_basic_details + course_details + query_language + query_preferances + query_referance_contact + query_technologies + query_work_experience, (err, result) => {
         // 
-        // //console.log("result upadte:"+result[0]);
+        // ////console.log("result upadte:"+result[0]);
         if (result[0] == "") {
             return res.end("not present that user id:" + req.params.id)
         }
@@ -593,7 +593,7 @@ router.post('/update/',
         const city = req.body.city
         const state = req.body.state
         const zipcode = req.body.zipcode
-        // //console.log("RelationShip:"+RelationShip)
+        // ////console.log("RelationShip:"+RelationShip)
         const course_name = req.body.course_name
         const passing_year = req.body.passing_year
         const percentage = req.body.percentage
@@ -637,10 +637,10 @@ router.post('/update/',
         const sql_job_application_master = `UPDATE basic_details SET first_name ='${First}' ,last_name ='${last}' ,designation ='${Designation}' ,address1 ='${address1}' ,address2 ='${address2}' ,phoneNumber ='${Phone}',gender ='${Gender}' ,relationship_status ='${RelationShip}' ,dob ='${dob}' ,email ='${Email}' ,zip_id ='${zipcode}' ,city ='${city}' ,state ='${state}' WHERE job_id ='${req.body.job_id}' ;`
 
 
-        // console.log("company_no hidden workDeleteId"+workDeleteId);
+        // //console.log("company_no hidden workDeleteId"+workDeleteId);
 
         // for(let i of workDeleteId){
-        //     console.log("company_no hidden:"+i);
+        //     //console.log("company_no hidden:"+i);
         //     let work_experience_workDeleteId = `UPDATE job_app_db_29.work_experience SET status='false' where job_id =${req.body.job_id} and w_no=${i};`
 
         //     connectMySql.query(work_experience_workDeleteId, (err, result) => {
@@ -654,7 +654,7 @@ router.post('/update/',
             // 
 
             // job_id= result.insertId;
-            //console.log("update: sql_job_application_master:" + err);
+            ////console.log("update: sql_job_application_master:" + err);
             // call(req.body.job_id)
 
             // })
@@ -667,7 +667,7 @@ router.post('/update/',
 
                     connectMySql.query(course_details, (err, result) => {
                         // 
-                        //console.log("successful course_details:" + err);
+                        ////console.log("successful course_details:" + err);
 
                     })
                 } catch (error) {
@@ -694,7 +694,7 @@ router.post('/update/',
 
                     connectMySql.query(course_details, (err, result) => {
                         // 
-                        //console.log("successful course_details:" + err + result.length + "\n");
+                        ////console.log("successful course_details:" + err + result.length + "\n");
 
                         for (const key in result) {
                             if (result[key].affectedRows == 0) {
@@ -703,7 +703,7 @@ router.post('/update/',
                                 try {
 
                                     connectMySql.query(course_details, (err, result) => {
-                                        //console.log("successful course_details");
+                                        ////console.log("successful course_details");
                                     })
                                 } catch (error) {
                                     res.status(500).json({ err: "update course_details" })
@@ -728,7 +728,7 @@ router.post('/update/',
 
                     connectMySql.query(language_hindi, (err, result) => {
                         // 
-                        //console.log("successful update  language_hindi:" + err + "language_hindi:" + result);
+                        ////console.log("successful update  language_hindi:" + err + "language_hindi:" + result);
                         if (result.affectedRows == 0) {
                             const language_hindi = `INSERT INTO language (job_id,language_name,l_read,l_write,l_speak) VALUES ('${req.body.job_id}','${hindi}','${hindiread}','${hindiwrite}','${hindispeak}')`
 
@@ -737,7 +737,7 @@ router.post('/update/',
 
 
                                 connectMySql.query(language_hindi, (err, result) => {
-                                    //console.log("successful language_hindi");
+                                    ////console.log("successful language_hindi");
 
 
                                 })
@@ -790,13 +790,13 @@ router.post('/update/',
 
                     connectMySql.query(language_english, (err, result) => {
                         // 
-                        //console.log("successful language_english:" + err + result);
+                        ////console.log("successful language_english:" + err + result);
                         if (result.affectedRows == 0) {
                             const language_english = `INSERT INTO language (job_id,language_name,l_read,l_write,l_speak) VALUES ('${req.body.job_id}','${english}','${englishread}','${englishwrite}','${englishspeak}')`    // 
 
                             try {
                                 connectMySql.query(language_english, (err, result) => {
-                                    //console.log("successful language_english");
+                                    ////console.log("successful language_english");
                                 })
                             } catch (error) {
                                 res.status(500).json({ err: "update language_english" })
@@ -826,7 +826,7 @@ router.post('/update/',
                                 const technologies_php = `INSERT INTO technologies (job_id,name,level) VALUES ('${req.body.job_id}','${php}','${phplevel}')`
                                 connectMySql.query(technologies_php, (err, result) => {
                                     // 
-                                    //console.log("successful technologies");
+                                    ////console.log("successful technologies");
 
                                 })
                             } catch (error) {
@@ -851,7 +851,7 @@ router.post('/update/',
 
                     connectMySql.query(technologies_mysql, (err, result) => {
                         // 
-                        //console.log("successful technologies_mysql:" + err);
+                        ////console.log("successful technologies_mysql:" + err);
                         if (result.affectedRows == 0) {
                             const technologies_mysql = `INSERT INTO technologies (job_id,name,level) VALUES ('${req.body.job_id}','${mysql}','${mysqllevel}')`
 
@@ -860,7 +860,7 @@ router.post('/update/',
 
 
                                 connectMySql.query(technologies_mysql, (err, result) => {
-                                    //console.log("successful technologies_mysql");
+                                    ////console.log("successful technologies_mysql");
 
                                 })
                             } catch (error) {
@@ -886,7 +886,7 @@ router.post('/update/',
 
                     connectMySql.query(technologies_oracle, (err, result) => {
                         // 
-                        //console.log("successful technologies_oracle:" + err + JSON.stringify(result));
+                        ////console.log("successful technologies_oracle:" + err + JSON.stringify(result));
 
                         if (result.affectedRows == 0) {
                             const technologies_oracle = `INSERT INTO technologies (job_id,name,level) VALUES ('${req.body.job_id}','${oracle}','${oraclelevel}')`
@@ -895,7 +895,7 @@ router.post('/update/',
 
 
                                 connectMySql.query(technologies_oracle, (err, result) => {
-                                    //console.log("successful technologies_oracle HUERGI");
+                                    ////console.log("successful technologies_oracle HUERGI");
 
                                 })
                             } catch (error) {
@@ -922,7 +922,7 @@ router.post('/update/',
 
                     connectMySql.query(technologies_laravel, (err, result) => {
                         // 
-                        //console.log("successful technologies_laravel:" + err + result);
+                        ////console.log("successful technologies_laravel:" + err + result);
                         if (result.affectedRows == 0) {
                             const technologies_laravel = `INSERT INTO technologies (job_id,name,level) VALUES ('${req.body.job_id}','${laravel}','${laravelLevel}')`
 
@@ -931,7 +931,7 @@ router.post('/update/',
 
                                 connectMySql.query(technologies_laravel, (err, result) => {
                                     // 
-                                    //console.log("successful technologies_laravel");
+                                    ////console.log("successful technologies_laravel");
 
                                 })
                             } catch (error) {
@@ -954,7 +954,7 @@ router.post('/update/',
 
                 connectMySql.query(preferances, (err, result) => {
                     // 
-                    //console.log("successful preferances:" + err);
+                    ////console.log("successful preferances:" + err);
 
                 })
             } catch (error) {
@@ -969,7 +969,7 @@ router.post('/update/',
 
                     connectMySql.query(work_experience, (err, result) => {
                         // 
-                        //console.log("successful work_experience:" + err);
+                        ////console.log("successful work_experience:" + err);
 
                     })
                 } catch (error) {
@@ -990,7 +990,7 @@ router.post('/update/',
                     }
                 }
 
-                //console.log("query work_experience:" + work_experience);
+                ////console.log("query work_experience:" + work_experience);
 
                 try {
 
@@ -1007,7 +1007,7 @@ router.post('/update/',
 
                                 connectMySql.query(work_experience, (err, result) => {
                                     // 
-                                    console.log("successful work_experience");
+                                    //console.log("successful work_experience");
 
                                 })
                             } catch (error) {
@@ -1024,7 +1024,7 @@ router.post('/update/',
 
                                     connectMySql.query(work_experience, (err, result) => {
                                         // 
-                                        //console.log("successful work_experience");
+                                        ////console.log("successful work_experience");
 
                                     })
                                 } catch (error) {
@@ -1048,7 +1048,7 @@ router.post('/update/',
 
                     connectMySql.query(referance_contact, (err, result) => {
                         // 
-                        //console.log("successful referance_contact:" + err);
+                        ////console.log("successful referance_contact:" + err);
 
                     })
                 } catch (error) {
@@ -1068,20 +1068,20 @@ router.post('/update/',
                     }
                 }
 
-                // //console.log("query referance_contact:" + referance_contact);
+                // ////console.log("query referance_contact:" + referance_contact);
                 try {
 
 
                     connectMySql.query(referance_contact, (err, result) => {
                         // 
-                        //console.log("successful HI referance_contact:" + JSON.stringify(result));
+                        ////console.log("successful HI referance_contact:" + JSON.stringify(result));
 
                         if (result.affectedRows == 0) {
                             let referance_contact = `INSERT INTO referance_c (job_id,name,contactNumber,relation,r_no) VALUES ('${req.body.job_id}','${ReferanceName}','${ReferanceContact}','${Relation}','1') `
 
                             connectMySql.query(referance_contact, (err, result) => {
                                 // 
-                                //console.log("successful referance_contact");
+                                ////console.log("successful referance_contact");
 
                             })
                             return
@@ -1093,7 +1093,7 @@ router.post('/update/',
                                 try {
                                     connectMySql.query(referance_contact, (err, result) => {
                                         // 
-                                        //console.log("successful referance_contact");
+                                        ////console.log("successful referance_contact");
 
                                     })
                                 } catch (error) {

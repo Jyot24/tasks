@@ -22,7 +22,7 @@ router.all('/viewGrid/:id?', (req, res) => {
             // numRows = result.affectedRows;
             if (result.length == 1) {
                 totalpageno = 1
-                console.log("result.length:" + result.length);
+                //console.log("result.length:" + result.length);
             } else {
                 totalpageno = Math.ceil(result.length / 20)
             }
@@ -56,7 +56,7 @@ router.all('/viewGrid/:id?', (req, res) => {
 
 
 
-            // console.log("query:"+req.body.sql_query);
+            // //console.log("query:"+req.body.sql_query);
             con.query(query, function (err, result) {
                 if (err) {
                     let success = false

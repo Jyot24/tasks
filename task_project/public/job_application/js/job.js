@@ -45,7 +45,7 @@ const enDisFields = (lang) => {
 //         if (element.nodeName == 'INPUT')
 //             element.value = ''
 //     })
-//     //console.log("hi");
+//     ////console.log("hi");
 // }
 
 // function myFunctionReferance() {
@@ -75,12 +75,12 @@ const enDisFields = (lang) => {
 //             element.value = ''
 //     })
 //     // document.querySelectorAll('#course-child').forEach(element=>{
-//     //     console.log(element)
+//     //     //console.log(element)
 //     // })    
 
 
 //     // let last_chlid=document.getElementById("course").lastChild; 
-//     // console.log(last_chlid.childNodes);
+//     // //console.log(last_chlid.childNodes);
 
 
 // }

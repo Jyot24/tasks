@@ -4,11 +4,11 @@ function handle_attend_Change(month){
     
     month_v=month
     if(! month.value){
-        console.log(hi);
+        //console.log(hi);
     }
     
    
-    console.log(":"+month.value);
+    //console.log(":"+month.value);
     
     // window.location = 'http://localhost:9040/userAttendence/1?order="'+month.value+'"';
     window.location.href="/student_exam/userAttendence/1?order="+ month.value

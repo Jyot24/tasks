@@ -9,7 +9,7 @@ function validateForm() {
     const validate_email = (email) => {
         let emailRegx = /^[^\s@]+@[^\s@]+.[^\s@]+$/
 
-        // //console.log(email);
+        // ////console.log(email);
         if (!emailRegx.test(email)) {
             document.getElementById('error-Email').innerHTML = "email is invalid"
             document.getElementById('error-Email').style.color = "red"
@@ -39,7 +39,7 @@ function validateForm() {
 
     
     // let field_required=document.forms["job_form"]
-    // //console.log("validateForm:" + JSON.stringify(field_required));
+    // ////console.log("validateForm:" + JSON.stringify(field_required));
 
     let errors = document.querySelectorAll(".error");
     for (let error of errors) {
@@ -60,7 +60,7 @@ function validateForm() {
 
     [...document.querySelectorAll('.checked-date')].map((element)=>{
         let dateRegx = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/
-//console.log("!dateRegx.test(element.value):"+!dateRegx.test(element.value));
+////console.log("!dateRegx.test(element.value):"+!dateRegx.test(element.value));
         if (!dateRegx.test(element.value)) {
             document.getElementById('error-' + "checked-date").innerHTML = element.id + " IS NOT A DATE"
             document.getElementById('error-' + "checked-date").style.color = "red"
@@ -82,12 +82,12 @@ function validateForm() {
         }
     })
     let field_required = document.querySelectorAll(".field-required");
-    // //console.log(field_required);
+    // ////console.log(field_required);
 
     for (let i = 0; i < field_required.length; i++) {
 
         if (field_required[i].value.trim() == "") {
-            // //console.log("hi");
+            // ////console.log("hi");
             // field_required[i].innerHTML = field_required[i]+ "can't be none"
             document.getElementById('error-' + field_required[i].id).innerHTML = field_required[i].id + " can't be none"
             document.getElementById('error-' + field_required[i].id).style.color = "red"
@@ -118,7 +118,7 @@ function validateForm() {
     let check_all_fill = 0
 
     for (let i = 0; i < check_all_fill_or_not.length; i++) {
-        // //console.log("field_required[i].value:" + check_all_fill_or_not[i].value + ":" + i);
+        // ////console.log("field_required[i].value:" + check_all_fill_or_not[i].value + ":" + i);
         if (check_all_fill_or_not[i].value == "") {
             if (check_all_fill == 1) {
                 check_all_fill = 2
@@ -167,7 +167,7 @@ function validateForm() {
 
     // }
     // if (check_all_fill_work == 2) {
-    //     // //console.log("work exper:");
+    //     // ////console.log("work exper:");
     //     document.getElementById('check-all-fill-or-not-work').innerHTML = "either you fill all field or empty all field"
     //     document.getElementById('check-all-fill-or-not-work').style.color = "red"
     //     istrue = false
@@ -295,7 +295,7 @@ function validateForm() {
 
     // }
 
-console.log("istrue:"+istrue);
+//console.log("istrue:"+istrue);
 return istrue;
 } catch (error) {
     return false;

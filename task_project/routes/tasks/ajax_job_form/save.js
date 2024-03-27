@@ -130,7 +130,7 @@ router.post('/language', async (req, res) => {
                 }else{
                     //  res.status(200).json({ success:true,message: result });
                 }
-                ////console.log("successful language_hindi");
+                //////console.log("successful language_hindi");
             })
         } catch (error) {
             //  res.status(400).json({ error_insert: "insert language_hindi" })
@@ -195,7 +195,7 @@ router.post('/preferances', async (req, res) => {
     const CurrentcTC = req.body.CurrentcTC || ""
     const Department = req.body.department || ""
 
-    //console.log("preferances : Route"+JSON.stringify(req.body));
+    ////console.log("preferances : Route"+JSON.stringify(req.body));
 
     const preferances = `INSERT INTO preferances (job_id,preferd_location,notice_period,expacted_ctc,current_ctc,department) VALUES ('${id}','${Prefedlocation}','${Noticeperiod}','${ExpactedCtc}','${CurrentcTC}','${Department}')`
 
@@ -244,8 +244,8 @@ router.post('/referance_contact', async (req, res) => {
         } else {
 
             let referance_contact = ``
-            ////console.log("referance_contact: type:" + typeof ReferanceName + typeof ReferanceName[0]);
-            //console.log("referance_contact")
+            //////console.log("referance_contact: type:" + typeof ReferanceName + typeof ReferanceName[0]);
+            ////console.log("referance_contact")
             for (let i = 0; i < Relation.length; i++) {
                 if (i == Relation.length - 1) {
                     referance_contact = referance_contact + `INSERT INTO referance_c (job_id,name,contactNumber,relation,r_no) VALUES ('${id}','${ReferanceName[i]}','${ReferanceContact[i]}','${Relation[i]}','${i + 1}');`
@@ -259,7 +259,7 @@ router.post('/referance_contact', async (req, res) => {
 
             try {
                 connectMySql.query(referance_contact, (err, result) => {
-                //console.log("query referance_contact:" + JSON.stringify(result));
+                ////console.log("query referance_contact:" + JSON.stringify(result));
 
                     
                     if(err){
@@ -288,7 +288,7 @@ router.post('/technologies', async (req, res) => {
     const oracle = req.body.oracle || ""
     const oraclelevel = req.body.oraclelevel || ""
 
-    //console.log("technologies:ROUTE"+JSON.stringify(req.body));
+    ////console.log("technologies:ROUTE"+JSON.stringify(req.body));
     if (php != "") {
         const technologies_php = `INSERT INTO technologies (job_id,name,level) VALUES ('${id}','${php}','${phplevel}')`
 
@@ -419,7 +419,7 @@ router.post('/work_experience', async (req, res) => {
                 }
             }
 
-            ////console.log("query work_experience:" + work_experience);
+            //////console.log("query work_experience:" + work_experience);
 
             try {
                 connectMySql.query(work_experience, (err, result) => {

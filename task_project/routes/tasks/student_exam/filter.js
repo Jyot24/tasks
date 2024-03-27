@@ -7,14 +7,14 @@ router.post('/searchById', (req, res) => {
     var s_id = req.body.student_id
 
     query = `SELECT * FROM student_master where student_id=${s_id};`
-    console.log("s_id:" + s_id);
+    //console.log("s_id:" + s_id);
 
     con.query(query, function (err, result) {
         if(err){
             res.end("Query is not correct.")
         }
         // res.render()
-        // console.log("result filter:" + JSON.stringify(result));
+        // //console.log("result filter:" + JSON.stringify(result));
         res.render('student_exam/component/read', { temp: result })
     })
 })
@@ -39,14 +39,14 @@ router.post('/filterResult', (req, res) => {
     //or
 
 
-    // console.log("query:"+query);
+    // //console.log("query:"+query);
 
     con.query(query, function (err, result) {
         if (err) {
             res.end('query is not write:'+err)
         }
         // res.render()
-        // console.log("result filter:"+JSON.stringify(result));
+        // //console.log("result filter:"+JSON.stringify(result));
         // res.render('component/read',{temp:result,filter:"filter"})
         res.render('student_exam/attendence', { temp: result, filter: "filter" })
 

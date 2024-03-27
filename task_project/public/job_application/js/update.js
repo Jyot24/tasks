@@ -15,9 +15,9 @@
 
 
     let combo_tech = JSON.parse(combo_tech_temp)
-    // //console.log(JSON.parse(combo_tech_temp));
+    // ////console.log(JSON.parse(combo_tech_temp));
     for (let i in combo_tech) {
-        // //console.log("combo_tech:" + combo_tech[i].name);
+        // ////console.log("combo_tech:" + combo_tech[i].name);
         document.getElementById(`${combo_tech[i].name}`).checked = true;
         let subfields = document.querySelectorAll(`.${combo_tech[i].name}`);
 
@@ -54,15 +54,15 @@
 
             element.appendChild(newOption);
         })
-        console.log("hi");
+        //console.log("hi");
     } else {
         [...document.querySelectorAll('.course')].map((element, index) => {
             // element.selected = ""
             const newOption = document.createElement('option');
             let couser_object = JSON.parse(couse_temp)
-            //console.log(typeof index);
+            ////console.log(typeof index);
             let current_couser_object = couser_object[`${index}`].name
-            //console.log("elementbhu:" + `${current_couser_object}`);
+            ////console.log("elementbhu:" + `${current_couser_object}`);
 
             const optionText = document.createTextNode(`${current_couser_object}`);
 
@@ -76,7 +76,7 @@
     }
    
 
-    //console.log("radiobtn:" + radiobtn);
+    ////console.log("radiobtn:" + radiobtn);
 
 
     for (let id in object_seleted) {

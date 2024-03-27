@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tak Toc</title>
+    <style>
+        table,tr,td{
+           border: 1px solid rgb(255, 255, 255);
+       }
+       td{
+           height: 100px;
+           width:100px;
+           background-color: rgb(183, 127, 127);
+           color: aliceblue;
+           font-size: 16px;
+           text-align: center;
+       }
+       table{
+        display: flex;
+        justify-content: center;
+        width: 300px;
+        height: 300px;
+       }
+       
+       </style>
+</head>
+<body>
+    <a href="/user/profile/" tabindex="5">Home</a>
+    <h1 style="text-align: center;">Jyot
+        Khant (24DEV057) 02-02-2024</h1>
+        <button id="newGame" onclick="newGame()">
+            start New Game
+        </button>
+    <div class="table_info" style="pointer-events: none;">
+        <p><span id="X">-></span>Rohit(X)</p>
+        <p><span id="O"></span>Virat(O)</p>
+    </div>
+        <table id="table_info">
+            <tr>
+                <td id="1"></td>
+                <td id="2"></td>
+                <td id="3"></td>
+            </tr>
+            <tr>
+                <td id="4"></td>
+                <td id="5"></td>
+                <td id="6"></td>
+            </tr>
+            <tr>
+                <td id="7"></td>
+                <td id="8"></td>
+                <td id="9"></td>
+            </tr>
+        </table>
+   
+    <!-- <script>
+        var ta=document.getElementsByTagName('table')
+var counter=1;
+var result=1
+
+ta.addEventListener('click', function(e) {
+})
+    </script> -->
+    <script >var table=document.getElementById('table_info');
+        // var table=document.getElementsByTagName('td');
+        
+        
+                var counter=0;
+                
+            table.addEventListener('click',function (e){
+        
+                    var id=e.target.id
+                    if(counter%2!=0){
+                        document.getElementById(id).innerText="O";
+                        document.getElementById(id).style.pointerEvents="none"
+        
+                        document.getElementById("X").innerText="->"
+                        document.getElementById("O").innerText=""
+                        counter++
+                    }else{
+                        document.getElementById(id).innerText="X";
+                        document.getElementById(id).style.pointerEvents="none"
+                        document.getElementById("O").innerText="->"
+                        document.getElementById("X").innerText=""
+                        counter++
+                    }
+        
+                    if(counter>=5){
+                        var td1=document.getElementById('1').innerText
+                        var td2=document.getElementById('2').innerText
+                        var td3=document.getElementById('3').innerText
+                        var td4=document.getElementById('4').innerText
+                        var td5=document.getElementById('5').innerText
+                        var td6=document.getElementById('6').innerText
+                        var td7=document.getElementById('7').innerText
+                        var td8=document.getElementById('8').innerText
+                        var td9=document.getElementById('9').innerText
+        
+                        
+                        if( (td1=="X" && td2=="X" &&td3=="X" )|| 
+                            (td4=="X" && td5=="X" && td6=="X")|| 
+                            (td7=="X" && td8=="X" && td9=="X")|| 
+                            (td1=="X" && td4=="X" && td7=="X")|| 
+                            (td2=="X" && td5=="X" && td8=="X")|| 
+                            (td3=="X" && td6=="X" && td9=="X")|| 
+                            (td1=="X" && td5=="X" && td9=="X")|| 
+                            (td3=="X" && td5=="X" && td7=="X") ) {
+                                alert('winner is X');
+                                location.reload()
+                            }
+                        else  if((td1=="O" && td2=="O" &&td3=="O" )|| 
+                                (td4=="O" && td5=="O" && td6=="O")|| 
+                                (td7=="O" && td8=="O" && td9=="O")|| 
+                                (td1=="O" && td4=="O" && td7=="O")|| 
+                                (td2=="O" && td5=="O" && td8=="O")|| 
+                                (td3=="O" && td6=="O" && td9=="O")|| 
+                                (td1=="O" && td5=="O" && td9=="O")|| 
+                                (td3=="O" && td5=="O" && td7=="O") ) {
+                                    alert('winner is O');
+                                    location.reload()
+                    }
+            }
+            if(counter==9){
+                alert("NO WINNER")
+            }
+        }
+            )
+        
+        const newGame=()=>{
+            location.reload()
+        }</script>
+</body>
+</html>

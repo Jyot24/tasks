@@ -5,7 +5,7 @@ let activation_code_temp=""
 try {
   activation_code_temp=activation_code
  
-  ////////console.log("is_expire:"+is_expire);
+  //////////console.log("is_expire:"+is_expire);
 } catch (error) {
   is_expire=false
 }
@@ -70,9 +70,9 @@ try {
       let expire_code = '<%=is_expire%>'
       let err = '<%=err%>'
       let email = '<%=email%>'
-      //////console.log("expire_code:"+expire_code +"err:"+err);
+      ////////console.log("expire_code:"+expire_code +"err:"+err);
 if (expire_code === 'true') {
-  //////console.log("nviuwdrhg")
+  ////////console.log("nviuwdrhg")
   fetch(`http://localhost:8020/expire/activation_code`, {
           method: "post",
           headers: {
@@ -84,8 +84,8 @@ if (expire_code === 'true') {
           return response.json()
         })
         .then((data)=>{
-          //////console.log(JSON.stringify(data));
-          //////console.log(JSON.stringify(data));
+          ////////console.log(JSON.stringify(data));
+          ////////console.log(JSON.stringify(data));
           document.getElementById('setToken').innerHTML=` <a href="/register/verifyUser/?email=${email}&activation_code=${data.activation_code}">click to verify</a>`
         })
         
@@ -103,8 +103,8 @@ if(err!=""){
           return response.json()
         })
         .then((data)=>{
-          //////console.log(JSON.stringify(data));
-          //////console.log(JSON.stringify(data));
+          ////////console.log(JSON.stringify(data));
+          ////////console.log(JSON.stringify(data));
           document.getElementById('setToken').innerHTML=` <a href="/register/verifyUser/?email=${email}&activation_code=${data.activation_code}">click to verify</a>`
         })
 

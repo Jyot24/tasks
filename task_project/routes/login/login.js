@@ -42,7 +42,7 @@ router.post('/',async (req,res)=>{
 
                             const authToken = jwt.sign(req.body.email, JWT_SECRET);
 
-                           ////console.log("authToken:"+authToken);
+                           //////console.log("authToken:"+authToken);
                             localStorage.setItem("isLogin",true)
                             localStorage.setItem("authToken",authToken)
                             localStorage.setItem("email",req.body.email)

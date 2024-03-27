@@ -14,10 +14,11 @@
     th {
       margin-top: 20px;
       text-align: center;
+      
     }
 
     h5{
-     font-size: 50px;
+     font-size: 70px;
     }
     
     th{
@@ -25,14 +26,23 @@
     }
 
     td{
+      padding:0px 50px;
+      background-color: rgb(25, 231, 231);
      font-size: 20px;
+    }
+
+    tr{
+      margin: 20px 0px;
+      border: 1px solid white;
+      background-color: rgb(19, 159, 33);
     }
   </style>
 </head>
 
 <body>
-  <section class="vh-100 " id="card">
-    <h5>ALL TASK</h5>
+  <%-include('component/navbar/navbar.ejs') %>
+  <h5>ALL TASK</h5>
+  <section class=" " id="card">
     <div class="container align-items-center h-100">
       <div id="card-items">
 
@@ -44,7 +54,7 @@
             <%for(let key of temp){%>
               <% const propertynames=Object.keys(key);%>
                 <tr>
-                  <%for(let i=1;i<propertynames.length;i++){%>
+                  <%for(let i=0;i<propertynames.length;i++){%>
 
                     <th>
                      <%=propertynames[i]%>
@@ -60,14 +70,20 @@
 
                     <%for(let key of temp){%>
                       <% const propertyvalues=Object.values(key); %>
-                        <tr>
-                          <%for(let i=1;i<propertyvalues.length;i++){%>
-                            <td>
-                              <a href="<%=propertyvalues[i]%>"><%=propertyvalues[i]%></a>
-                            </td>
+                      <td>
+                        <%=propertyvalues[0]%>
+                      </td>
 
-                            </td>
-                            <% } %>
+                      <td>
+                        <a href="<%=propertyvalues[1]%>"><%=propertyvalues[1]%></a>
+                      </td>
+
+                        <tr>
+                          <!-- <%for(let i=0;i<propertyvalues.length;i++){%> -->
+                          
+                           
+                            <!-- <% } %> -->
+                        </tr>
                               <% } %>
         </div>
       </div>
