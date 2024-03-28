@@ -75,7 +75,13 @@ app.use('/viewGrid',verifyAuth_is_login,require('./routes/tasks/viewGrid/page'))
 
 app.use('/event_table',verifyAuth_is_login,require('./routes/tasks/event_table/event_table'))
 
-app.use('/listuser_fs',require('./routes/tasks/listuser_fs/demo'))
+//*************************************************  listuser_fs  *********************************************************
+
+app.use('/listuser_fs', verifyAuth_is_login,require('./routes/tasks/listuser_fs/demo'))
+
+app.use('/student_crud', verifyAuth_is_login,require('./routes/tasks/student_crud/auth'))
+app.use('/student_crud', verifyAuth_is_login,require('./routes/tasks/student_crud/page'))
+
 
 //-------------------------------------------------  register and login  --------------------------------------------------------------
 

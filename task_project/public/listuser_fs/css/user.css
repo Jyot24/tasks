@@ -1,0 +1,37 @@
+body{
+    background-color: rgb(210, 194, 142);
+    color: rgb(122, 65, 65);
+}
+table {
+    border-collapse: collapse;
+  }
+
+th,td{
+    border: 1px solid white;
+}
+
+tr{
+    
+    height: 45px;
+    width: 1200px;
+    display: flex;
+    /* background-color: aqua; */
+    margin-bottom: 20px;
+}
+
+th{
+    /* box-sizing: content-box; */
+    /* border: 1px solid white; */
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: auto;
+    /* padding: 1px; */
+}
+h1{
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}

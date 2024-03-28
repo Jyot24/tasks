@@ -4,12 +4,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>list user</title>
-        <link rel="stylesheet" href="/listuser_fs/home.css">
+        <link rel="stylesheet" href="/css/home.css">
 
     </head>
     <body>
         <h1>List Of User</h1>
-        <form action="/api/auth/userData" method="post">
+        <!-- <form action="/api/auth/userData" method="post"> -->
             <%var data=temp%>
             <!-- <%=JSON.stringify(data)%> -->
             <%var listuser=JSON.stringify(data)%>
@@ -19,7 +19,7 @@
                     <th>lastname</th>
                     <th>email</th>
                     <th>phonenumber</th>
-                    <th>more detail</th>
+                    <!-- <th>more detail</th> -->
                 </tr>
             </table>
 
@@ -31,7 +31,7 @@
                         <td><%=data[key].lastname %></td>
                         <td><%=data[key].email %></td>
                         <td><%=data[key].phonenumber %></td>
-                        <td><a href="/listuser_fs/userData/<%=key%> ">views deatil</a></td>
+                        <!-- <td><a href="/userData/<%=key%> ">views deatil</a></td> -->
 
                     </div>
                     <br>

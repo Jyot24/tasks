@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=\, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/navbar.css">
+    </head>
+    <body>
+        <%- include('Navbar'); %>
+        <h1>Add User</h1>
+        <div class="container">
+            <form action="/student_crud/updateUser" method="put">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" value="<%=data[0].firstname %>"
+                    placeholder="Your name.." required>
+
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lastname" value="<%=data[0].lastname %>"
+                    placeholder="Your last name.."  required>
+
+                <label for="age">age</label>
+                <input type="text" id="age" name="age" value="<%=data[0].age %>"
+                    placeholder="enter a age" required><br>
+
+                <label for="phonenumber">phonenumber</label>
+                <input type="text" id="phonenumber" name="phonenumber" value="<%=data[0].phonenumber %>"
+                    placeholder="phonenumber" required>
+
+                <label for="email">email</label>
+                <input type="text" id="email" name="email" value="<%=data[0].email %>"
+                    placeholder="enter a email" required><br>
+
+                <label for="gender">gender</label>
+                <input type="radio" name="gender" value="male">male
+                <input type="radio" name="gender" value="female">female<br>
+
+                <label for="hobbies">Hobbies</label>
+                <input type="checkbox" id="hobbies" name="hobbies"
+                    value="read">
+                <label for="read"> read</label>
+                <input type="checkbox" id="hobbies" name="hobbies"
+                    value="write">
+                <label for="Write"> Write</label>
+                <input type="checkbox" id="hobbies" name="hobbies"
+                    value="speak">
+                <label for="speak"> speak</label>
+                <input type="checkbox" id="hobbies" name="hobbies"
+                    value="movie">
+                <label for="movie"> movie</label><br>
+
+                <label for="address">address</label>
+                <textarea name="address" id="address" cols="30" rows="10" value="<%=data[0].address %>"
+                    style="height:200px" required></textarea>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+    </body>
+</html>
