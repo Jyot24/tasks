@@ -409,7 +409,7 @@
 
     let current_data = {};
 
-    ////console.log("type of page:" + type_of_page);
+    //////console.log("type of page:" + type_of_page);
 
     if (type_of_page == "update") {
         job_id = prompt("Please enter job id", "");
@@ -428,7 +428,7 @@
                     for (let key in current_data.result[0]) {
                         if (element.id == "dob") {
                             element.value = (new Date(current_data.result[0]["dob"])).toISOString().split('T')[0]
-                            // ////console.log(current_data.result[0]["dob"]);
+                            // //////console.log(current_data.result[0]["dob"]);
                         }
 
                         else if (key == element.id) {
@@ -449,7 +449,7 @@
     nextButtons.forEach(function (button, index) {
         button.addEventListener("click", async function (e) {
             // validateForm()
-            //  ////console.log("validateForm()"+validateForm());
+            //  //////console.log("validateForm()"+validateForm());
             //  if(!validateForm()){
             //             // save(entries[index].id)
             //            return
@@ -461,11 +461,11 @@
             let next_data = {}
 
             if (type_of_page == "update") {
-                ////console.log("hi vyuuy update");
+                //////console.log("hi vyuuy update");
                 getRecord(entries[index + 1].id, true)
             } else {
                 if (insert_object_status[entries[index].id]) {
-                    ////console.log("hi vyuuy");
+                    //////console.log("hi vyuuy");
                     update_record(entries[index].id)
                     
                 } else {
@@ -506,17 +506,17 @@
     }
 
     // if (entries[index].id == "course_details") {
-    //     ////console.log("(value.hasOwnProperty(element.id" + value.hasOwnProperty(element.id));
+    //     //////console.log("(value.hasOwnProperty(element.id" + value.hasOwnProperty(element.id));
     //     if (value.hasOwnProperty(element.id)) {
 
     //         value[element.id].push(element.value)
-    //         ////console.log("course_details" + JSON.stringify(value))
+    //         //////console.log("course_details" + JSON.stringify(value))
 
     //     } else {
     //         // value[element.id]=[element.value]
     //         value[element.id] = []
     //         value[element.id].push(element.value)
-    //         ////console.log("course_details ELSE" + JSON.stringify(value))
+    //         //////console.log("course_details ELSE" + JSON.stringify(value))
 
     //     }
 
@@ -526,7 +526,7 @@
     async function save(id) {
         let value = await record_object(id);
 
-        ////console.log("save value:" + JSON.stringify(value));
+        //////console.log("save value:" + JSON.stringify(value));
         insert_object_status[id] = true
         fetch(`http://localhost:8020/ajax_job_form/save/${id}`, {
             method: "post",
@@ -538,7 +538,7 @@
             .then((response) =>
                 response.json())
             .then(data => {
-                ////console.log("save fetch:" + JSON.stringify(data));
+                //////console.log("save fetch:" + JSON.stringify(data));
                 // job_id = data.job_id
                 if (job_id == "") {
                     job_id = data.job_id
@@ -655,9 +655,9 @@
 
         let value = await record_object(id);
 
-        ////console.log("record_object:" + JSON.stringify(value));
+        //////console.log("record_object:" + JSON.stringify(value));
 
-        // ////console.log(`http://localhost:9090/update/${id}`)
+        // //////console.log(`http://localhost:9090/update/${id}`)
 
 
         fetch(`http://localhost:8020/ajax_job_form/update/${id}`, {
@@ -684,7 +684,7 @@
     }
 
     function getRecord(id, check) {
-        ////console.log("job_id getrecord:" + job_id);
+        //////console.log("job_id getrecord:" + job_id);
         fetch(`http://localhost:8020/ajax_job_form/read/${id}`, {
             method: "post",
             headers: {
@@ -703,13 +703,13 @@
                     // const para = document.createElement("div");
                     // para.className = "course-chlid";
 
-                    ////console.log("fetch:" + JSON.stringify(object_status[id]));
+                    //////console.log("fetch:" + JSON.stringify(object_status[id]));
 
                     if (!object_status[id]) {
                         if (next_data.result.length > 0) {
                             next_data.result.map((course) => {
 
-                                ////console.log("course[passing_year]:" + course["passing_year"]);
+                                //////console.log("course[passing_year]:" + course["passing_year"]);
                                 let string_course = ""
                                 const para = document.createElement("div");
                                 para.className = "course-chlid";
@@ -760,14 +760,14 @@
                             if (element.id == "passing_year") {
                                 element.value = next_data.result[current_data_length_of_course]["passing_year"]
 
-                                ////console.log("next_data.result: " + JSON.stringify(next_data.result) + "passing_year:" + next_data.result[0]["passing_year"] + ":" + next_data.result[1]["passing_year"]);
+                                //////console.log("next_data.result: " + JSON.stringify(next_data.result) + "passing_year:" + next_data.result[0]["passing_year"] + ":" + next_data.result[1]["passing_year"]);
 
-                                ////console.log("passing_year:" + next_data.result[current_data_length_of_course]["passing_year"] + current_data_length_of_course);
+                                //////console.log("passing_year:" + next_data.result[current_data_length_of_course]["passing_year"] + current_data_length_of_course);
                             }
 
                             if (element.id == "percentage") {
                                 element.value = next_data.result[current_data_length_of_course]["percentage"]
-                                ////console.log("percentage:" + next_data.result[current_data_length_of_course]["percentage"]);
+                                //////console.log("percentage:" + next_data.result[current_data_length_of_course]["percentage"]);
 
                                 current_data_length_of_course++
                             }
@@ -776,7 +776,7 @@
                             //     element.value = next_data.result[key][key]
                             //     break;
                             // }
-                            // ////console.log("KEY:" + key + " element.id:" + element.id);
+                            // //////console.log("KEY:" + key + " element.id:" + element.id);
                         })
                         // }
                     }
@@ -789,7 +789,7 @@
                     // }
                     // for (let key in next_data.result[0]) {
                     //     if (element.id == "course_name") {
-                    //         ////console.log("course_name:"+next_data.result.length);
+                    //         //////console.log("course_name:"+next_data.result.length);
 
                     //         const newOption = document.createElement('option');
 
@@ -807,7 +807,7 @@
                     //         element.value = next_data.result[0][key]
                     //         break;
                     //     }
-                    //     // ////console.log("KEY:" + key + " element.id:" + element.id);
+                    //     // //////console.log("KEY:" + key + " element.id:" + element.id);
                     // }
                     // })
                 }
@@ -843,7 +843,7 @@
                 if (id == "language") {
                     let combo_language = next_data.result[0]
                     for (const key in next_data.result) {
-                        // //console.log("combo_language:" + key + "combo_language[key].language_name:" + next_data.result[key]["language_name"]);
+                        // ////console.log("combo_language:" + key + "combo_language[key].language_name:" + next_data.result[key]["language_name"]);
                         document.getElementById(`${next_data.result[key]["language_name"]}`).checked = true;
                         let subfields = document.querySelectorAll(`.${next_data.result[key]["language_name"]}`);
 
@@ -860,9 +860,9 @@
 
 
                 if (id == "technologies") {
-                    //console.log("n8h");
+                    ////console.log("n8h");
                     for (let i in next_data.result) {
-                        //console.log(i);
+                        ////console.log(i);
                         document.getElementById(`${next_data.result[i].name}`).checked = true;
                         let subfields = document.querySelectorAll(`.${next_data.result[i].name}`);
 
@@ -909,7 +909,7 @@
                     [...document.querySelectorAll(`.${id}`)].map((element) => {
 
                         if (element.id == "preferdlocation") {
-                            // ////console.log("course_name:");
+                            // //////console.log("course_name:");
 
                             const newOption = document.createElement('option');
 
@@ -938,7 +938,7 @@
                         }
 
                         if (element.id == "department") {
-                            // ////console.log("course_name:");
+                            // //////console.log("course_name:");
 
                             const newOption = document.createElement('option');
 

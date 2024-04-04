@@ -113,7 +113,7 @@
                 document.getElementById('increment').disabled = true
                 document.getElementById('last').disabled = true
 
-                //console.log(pageno);
+                ////console.log(pageno);
             } else {
                 document.getElementById('current-page').innerHTML = pageno + 1
                 pageno = pageno + 1
@@ -164,7 +164,7 @@
             return response.json();
         })
         .then(users => {
-            //console.log("jondfrgu9iegu");
+            ////console.log("jondfrgu9iegu");
             object = users
             current_page_record(users, 1);
             document.getElementById('decrement').disabled = true
@@ -173,7 +173,7 @@
             // current_page_record(users);
         })
         // .catch(error => {
-        //     //console.error('There was a problem with the fetch operation:', error);
+        //     ////console.error('There was a problem with the fetch operation:', error);
         // });
 
     async function current_page_record(users, pageno) {
@@ -187,7 +187,7 @@
 
 
         const propertynames = Object.keys(users_sliced[0]);
-        temp = temp + "<tr><th>views</th>"
+        // temp = temp + "<tr><th>views</th>"
 
         propertynames.map((name) => {
             temp = temp + "<th>" + name + "</th>"
@@ -197,7 +197,7 @@
 
         users_sliced.map((values) => {
             const propertyvalues = Object.values(values);
-            temp = temp + "<tr>" + `<td><a href="/json_place_holder/postDetails/${propertyvalues[0]}">views</a></td>`
+            // temp = temp + "<tr>" + `<td><a href="/json_place_holder/postDetails/${propertyvalues[0]}">views</a></td>`
 
             propertyvalues.map((name_value) => {
                 temp = temp + "<td>" + name_value.toString().substring(0, 50) + "</td>"
@@ -217,7 +217,7 @@
 
     async function onchange_serach(key) {
         let arr = await search(key);
-        //console.log("arr:" + arr);
+        ////console.log("arr:" + arr);
         let temp = ""
 
         if (arr == "") {
@@ -241,7 +241,7 @@
 
             temp = temp + "<tr>" + `<td><a href="/postDetails/${propertynames[0]}">views</a></td>`
             propertynames.map((keys) => {
-                //console.log(values[keys] + "keys");
+                ////console.log(values[keys] + "keys");
 
                 if (keys == "image" || keys == "thumbnail") {
                     temp += `<td><img src="${values[keys]}" alt="" srcset="" width="30px" height="10px"></td>`
@@ -262,14 +262,14 @@
     }
 
     // let arr= await search(current_page_object)
-    // //console.log("arr:"+arr);
+    // ////console.log("arr:"+arr);
 
     function search(searchKey) {
-        //console.log("searchKey:" + searchKey);
-        // //console.log("current_page_object:"+current_page_object);
+        ////console.log("searchKey:" + searchKey);
+        // ////console.log("current_page_object:"+current_page_object);
 
         // let ss= current_page_object.filter(obj => Object.keys(obj).some(key => {
-        //     // //console.log("keys:"+obj[key])
+        //     // ////console.log("keys:"+obj[key])
 
         //     obj[key].toString().includes("morbi")
         // }

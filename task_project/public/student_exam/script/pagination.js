@@ -7,9 +7,9 @@ function handleChange(get){
     if(get.value=="ASC"){
         anchor.options[0].setAttribute("selected", "selected");
     }
-    //console.log(":"+get.value);
+    ////console.log(":"+get.value);
     // anchor.addEventListener("change", (e)=>{
-    //     //console.log(e.target.value);
+    //     ////console.log(e.target.value);
     // });
     window.location.href = '/student_exam/listuser/1?order="'+get.value+'"';
     // anchor.setAttribute('href', 'https://www.example.com');

@@ -36,6 +36,17 @@
       border: 1px solid white;
       background-color: rgb(19, 159, 33);
     }
+    #navbarSupportedContent{
+      display: flex;
+      justify-content:flex-end;
+    }
+    li{
+      display: flex;
+      justify-content: space-between;
+    }
+    span,a{
+      margin: 0px 10px;
+    }
   </style>
 </head>
 
@@ -70,6 +81,7 @@
 
                     <%for(let key of temp){%>
                       <% const propertyvalues=Object.values(key); %>
+                      
                       <td>
                         <%=propertyvalues[0]%>
                       </td>

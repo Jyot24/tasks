@@ -25,9 +25,9 @@ let object = {
 
                 for (let key in result) {
                     stringMid += `<option value="${result[key]["option_key"]}">`
-                    // //////console.log("key:" + result[key]["option_key"]);
+                    // ////////console.log("key:" + result[key]["option_key"]);
                     stringMid = stringMid + result[key]["option_key"] + "</option>"
-                    // //////console.log(JSON.stringify(result));
+                    // ////////console.log(JSON.stringify(result));
                 }
 
                 
@@ -38,8 +38,8 @@ let object = {
                 // <option></option>
                 // </select>`
 
-                // //////console.log("string:" + mainString);
-                // //////console.log("result:"+result);
+                // ////////console.log("string:" + mainString);
+                // ////////console.log("result:"+result);
                 resolve(stringStart + stringMid + stringEnd);
                 // resolve(stringStart + stringMid + stringEnd)
                 // return stringStart + stringMid + stringEnd
@@ -62,8 +62,8 @@ let object = {
 
                 for (let key in result) {
                     stringMid += `<input type="radio" name="${name}" id="${result[key]["option_key"]}" value="${result[key]["option_key"]}" checked>${result[key]["option_key"]}`
-                    // //////console.log("key:" + result[key]["option_key"]);
-                    // //////console.log(JSON.stringify(result));
+                    // ////////console.log("key:" + result[key]["option_key"]);
+                    // ////////console.log(JSON.stringify(result));
                 }
 
 
@@ -72,7 +72,7 @@ let object = {
                 // <option></option>
                 // </select>`
 
-                // //////console.log("result:"+result);
+                // ////////console.log("result:"+result);
                 resolve(stringMid);
                 // return stringStart + stringMid + stringEnd
             })
@@ -130,7 +130,7 @@ let object = {
 
                 }
                 resolve(stringMid)
-                // //////console.log("combo :"+stringMid);
+                // ////////console.log("combo :"+stringMid);
             })
 
         })
@@ -164,9 +164,9 @@ let object = {
 
 //          for(let key in result){
 //             stringMid +="<option>"
-//             //////console.log("key:"+result[key]["option_key"]);
+//             ////////console.log("key:"+result[key]["option_key"]);
 //             stringMid = stringMid + result[key]["option_key"] +"</option>"
-//             // //////console.log(JSON.stringify(result));
+//             // ////////console.log(JSON.stringify(result));
 //          }
 
 //          mainString = stringStart + stringMid + stringEnd
@@ -176,8 +176,8 @@ let object = {
 //         // <option></option>
 //         // </select>`
 
-//         //////console.log("string:"+mainString);
-//         // //////console.log("result:"+result);
+//         ////////console.log("string:"+mainString);
+//         // ////////console.log("result:"+result);
 //         resolve(mainString);
 //         // return stringStart + stringMid + stringEnd
 //     })
